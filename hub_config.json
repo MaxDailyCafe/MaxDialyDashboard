@@ -19,10 +19,10 @@
   },
   "location": {
     "branch_name": "MAX DAILY — Flagship Roastery & Bakery",
-    "address_line_1": "Specialty Coffee District, Main Boulevard",
-    "address_line_2": "Cairo, Egypt",
+    "address_line_1": "Specialty Coffee District",
+    "address_line_2": "Main Boulevard, Cairo, Egypt",
     "hours": "Daily: 07:00 AM – 12:00 AM",
-    "phone": "+20 100 000 0000",
+    "phone": "",
     "whatsapp": "https://wa.me/201000000000?text=Hello%20MAX%20DAILY!",
     "google_maps_url": "https://maps.google.com/?q=MAX+DAILY+Specialty+Coffee+and+Bakery",
     "coordinates_label": "30.0444° N, 31.2357° E"
@@ -90,49 +90,189 @@
     {
       "id": "signatures",
       "title": "MAX SIGNATURES",
-      "columns": ["HOT", "ICED"],
+      "columns": [
+        "HOT",
+        "ICED"
+      ],
       "items": [
-        { "name": "MAX DAILY SIGNATURE", "desc": "Salted caramel, roasted hazelnut & double shot", "prices": ["125", "135"] },
-        { "name": "PISTACHIO VELVET LATTE", "desc": "House pistachio cream & double espresso", "prices": ["135", "145"] },
-        { "name": "SPANISH LATTE", "desc": "Sweetened condensed milk & double espresso", "prices": ["115", "125"] },
-        { "name": "WHITE MOCHA BREW", "desc": "Belgian white chocolate & rich espresso", "prices": ["115", "125"] },
-        { "name": "ESPRESSO TONIC / CITRUS", "desc": "Sparkling botanical tonic, orange zest & shot", "prices": ["—", "125"] }
+        {
+          "name": "MAX DAILY SIGNATURE",
+          "desc": "Salted caramel, roasted hazelnut & double shot",
+          "prices": [
+            "125",
+            "135"
+          ]
+        },
+        {
+          "name": "PISTACHIO VELVET LATTE",
+          "desc": "House pistachio cream & double espresso",
+          "prices": [
+            "135",
+            "145"
+          ]
+        },
+        {
+          "name": "SPANISH LATTE",
+          "desc": "Sweetened condensed milk & double espresso",
+          "prices": [
+            "115",
+            "125"
+          ]
+        },
+        {
+          "name": "WHITE MOCHA BREW",
+          "desc": "Belgian white chocolate & rich espresso",
+          "prices": [
+            "115",
+            "125"
+          ]
+        },
+        {
+          "name": "ESPRESSO TONIC / CITRUS",
+          "desc": "Sparkling botanical tonic, orange zest & shot",
+          "prices": [
+            "—",
+            "125"
+          ]
+        }
       ]
     },
     {
       "id": "espresso_bar",
       "title": "ESPRESSO & MILK",
-      "columns": ["HOT", "ICED"],
+      "columns": [
+        "HOT",
+        "ICED"
+      ],
       "items": [
-        { "name": "ESPRESSO / DOPPIO", "desc": "Rich signature blend with velvety crema", "prices": ["65", "—"] },
-        { "name": "AMERICANO", "desc": "Double shot espresso over hot water or ice", "prices": ["75", "85"] },
-        { "name": "FLAT WHITE", "desc": "Double ristretto with thin micro-foam", "prices": ["95", "—"] },
-        { "name": "CAPPUCCINO", "desc": "Bold espresso, steamed milk & airy foam", "prices": ["95", "105"] },
-        { "name": "CAFFE LATTE", "desc": "Smooth daily dose with creamy steamed milk", "prices": ["95", "105"] }
+        {
+          "name": "ESPRESSO / DOPPIO",
+          "desc": "Rich signature blend with velvety crema",
+          "prices": [
+            "65",
+            "—"
+          ]
+        },
+        {
+          "name": "AMERICANO",
+          "desc": "Double shot espresso over hot water or ice",
+          "prices": [
+            "75",
+            "85"
+          ]
+        },
+        {
+          "name": "FLAT WHITE",
+          "desc": "Double ristretto with thin micro-foam",
+          "prices": [
+            "95",
+            "—"
+          ]
+        },
+        {
+          "name": "CAPPUCCINO",
+          "desc": "Bold espresso, steamed milk & airy foam",
+          "prices": [
+            "95",
+            "105"
+          ]
+        },
+        {
+          "name": "CAFFE LATTE",
+          "desc": "Smooth daily dose with creamy steamed milk",
+          "prices": [
+            "95",
+            "105"
+          ]
+        }
       ]
     },
     {
       "id": "brew_frappe",
       "title": "MANUAL BREW & FRAPPE",
-      "columns": ["REG", "LRG"],
+      "columns": [
+        "REG",
+        "LRG"
+      ],
       "items": [
-        { "name": "V60 POUR OVER", "desc": "Hand-poured single-origin specialty filter", "prices": ["120", "130"] },
-        { "name": "COLD BREW (18H)", "desc": "Slow-steeped small batch specialty roast", "prices": ["—", "115"] },
-        { "name": "CARAMEL ESPRESSO FRAPPE", "desc": "Blended ice, double espresso & buttery caramel", "prices": ["115", "130"] },
-        { "name": "LOTUS BISCOFF FRAPPE", "desc": "Creamy caramelized biscuit blend & espresso", "prices": ["125", "140"] }
+        {
+          "name": "V60 POUR OVER",
+          "desc": "Hand-poured single-origin specialty filter",
+          "prices": [
+            "120",
+            "130"
+          ]
+        },
+        {
+          "name": "COLD BREW (18H)",
+          "desc": "Slow-steeped small batch specialty roast",
+          "prices": [
+            "—",
+            "115"
+          ]
+        },
+        {
+          "name": "CARAMEL ESPRESSO FRAPPE",
+          "desc": "Blended ice, double espresso & buttery caramel",
+          "prices": [
+            "115",
+            "130"
+          ]
+        },
+        {
+          "name": "LOTUS BISCOFF FRAPPE",
+          "desc": "Creamy caramelized biscuit blend & espresso",
+          "prices": [
+            "125",
+            "140"
+          ]
+        }
       ]
     },
     {
       "id": "bakery_sweets",
       "title": "BAKERY & SWEETS",
-      "columns": ["PRICE"],
+      "columns": [
+        "PRICE"
+      ],
       "items": [
-        { "name": "FRENCH BUTTER CROISSANT", "desc": "Flaky golden-baked laminated pastry", "prices": ["85"] },
-        { "name": "PISTACHIO CROISSANT", "desc": "Twice-baked with house frangipane cream", "prices": ["115"] },
-        { "name": "SAN SEBASTIAN CHEESECAKE", "desc": "Creamy Basque cheesecake + warm chocolate", "prices": ["140"] },
-        { "name": "ESPRESSO FUDGE BROWNIE", "desc": "Rich dark chocolate chunk with sea salt", "prices": ["95"] },
-        { "name": "CINNAMON BRIOCHE ROLL", "desc": "Warm swirled brioche with cream cheese glaze", "prices": ["105"] }
+        {
+          "name": "FRENCH BUTTER CROISSANT",
+          "desc": "Flaky golden-baked laminated pastry",
+          "prices": [
+            "85"
+          ]
+        },
+        {
+          "name": "PISTACHIO CROISSANT",
+          "desc": "Twice-baked with house frangipane cream",
+          "prices": [
+            "115"
+          ]
+        },
+        {
+          "name": "SAN SEBASTIAN CHEESECAKE",
+          "desc": "Creamy Basque cheesecake + warm chocolate",
+          "prices": [
+            "140"
+          ]
+        },
+        {
+          "name": "ESPRESSO FUDGE BROWNIE",
+          "desc": "Rich dark chocolate chunk with sea salt",
+          "prices": [
+            "95"
+          ]
+        },
+        {
+          "name": "CINNAMON BRIOCHE ROLL",
+          "desc": "Warm swirled brioche with cream cheese glaze",
+          "prices": [
+            "105"
+          ]
+        }
       ]
     }
-  ]
+  ],
+  "custom_buttons": []
 }
