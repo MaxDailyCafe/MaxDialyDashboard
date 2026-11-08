@@ -22,7 +22,7 @@
     "address_line_1": "Specialty Coffee District",
     "address_line_2": "Main Boulevard, Cairo, Egypt",
     "hours": "Daily: 07:00 AM – 12:00 AM",
-    "phone": "",
+    "phone": "+20 100 000 0000",
     "whatsapp": "https://wa.me/201000000000?text=Hello%20MAX%20DAILY!",
     "google_maps_url": "https://maps.google.com/?q=MAX+DAILY+Specialty+Coffee+and+Bakery",
     "coordinates_label": "30.0444° N, 31.2357° E"
@@ -64,7 +64,7 @@
     {
       "id": "instagram",
       "platform": "Instagram",
-      "handle": "@",
+      "handle": "@maxdaily.coffee",
       "subtitle": "Daily pours, fresh bakes & community moments",
       "url": "https://instagram.com/maxdaily.coffee",
       "icon": "instagram"
@@ -72,7 +72,7 @@
     {
       "id": "tiktok",
       "platform": "TikTok",
-      "handle": "",
+      "handle": "@maxdaily.coffee",
       "subtitle": "Behind the bar & specialty coffee craft",
       "url": "https://tiktok.com/@maxdaily.coffee",
       "icon": "tiktok"
@@ -80,7 +80,7 @@
     {
       "id": "facebook",
       "platform": "Facebook",
-      "handle": "",
+      "handle": "/maxdaily.coffee",
       "subtitle": "Events, announcements & branch updates",
       "url": "https://facebook.com/maxdaily.coffee",
       "icon": "facebook"
