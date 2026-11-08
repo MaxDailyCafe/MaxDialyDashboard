@@ -19,6 +19,7 @@
       --gold-deep: #B5854B;
       --coffee-brown: #77583C;
       --border-gold: rgba(217, 174, 123, 0.32);
+      --red: #EF4444;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -114,12 +115,12 @@
       display: grid;
       grid-template-columns: 1fr 440px;
       gap: 28px;
-      max-width: 1280px;
+      max-width: 1320px;
       margin: 0 auto;
       padding: 28px 32px;
     }
 
-    @media (max-width: 960px) {
+    @media (max-width: 1024px) {
       .studio-grid { grid-template-columns: 1fr; }
     }
 
@@ -140,6 +141,9 @@
       margin-bottom: 16px;
       padding-bottom: 10px;
       border-bottom: 1px solid var(--border-gold);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
     .form-grid {
@@ -190,22 +194,60 @@
     }
 
     .btn {
-      padding: 13px 20px;
+      padding: 12px 18px;
       border-radius: 12px;
       border: 1.5px solid var(--gold);
       background: var(--gold);
       color: var(--espresso-deep);
       font-family: inherit;
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .btn.secondary {
       background: transparent;
       color: var(--gold);
+    }
+
+    .btn.danger {
+      background: rgba(239, 68, 68, 0.15);
+      border-color: var(--red);
+      color: var(--red);
+    }
+
+    .btn.danger:hover {
+      background: var(--red);
+      color: #fff;
+    }
+
+    /* Custom Button Row */
+    .button-row-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      gap: 10px;
+      align-items: center;
+      padding: 12px;
+      background: var(--espresso-deep);
+      border: 1px solid var(--border-gold);
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+
+    .help-box {
+      padding: 12px 16px;
+      background: rgba(217, 174, 123, 0.08);
+      border: 1px dashed var(--gold);
+      border-radius: 12px;
+      font-size: 11.5px;
+      line-height: 1.6;
+      color: var(--warm-beige);
+      margin-bottom: 16px;
     }
 
     /* Live Mobile Preview Frame */
@@ -250,8 +292,8 @@
       <div class="lock-title">MAX DAILY OWNER PANEL</div>
       <div class="lock-sub">Enter your Owner PIN to access dashboard settings</div>
       <input type="password" id="owner-pin" class="pin-input" placeholder="••••" maxlength="8" onkeydown="if(event.key==='Enter')unlockPanel()" />
-      <button class="btn" style="width:100%;" onclick="unlockPanel()">UNLOCK ACCESS</button>
-      <div id="pin-err" style="color:#F87171;font-size:11px;font-weight:700;margin-top:10px;display:none;">Incorrect Owner PIN</div>
+      <button class="btn" style="width:100%;justify-content:center;" onclick="unlockPanel()">UNLOCK ACCESS</button>
+      <div id="pin-err" style="color:#F87171;font-size:11px;font-weight:700;margin-top:10px;display:none;">Incorrect Owner PIN (Default: 2026)</div>
     </div>
   </div>
 
@@ -266,6 +308,7 @@
   <main class="studio-grid">
     <!-- Left Column: Controls -->
     <div>
+      <!-- 1. Core Links -->
       <div class="panel-card">
         <div class="panel-title">1. Website, Menu &amp; Google Rating</div>
         <div class="form-grid">
@@ -284,8 +327,39 @@
         </div>
       </div>
 
+      <!-- 2. Custom Buttons (Add & Remove) -->
       <div class="panel-card">
-        <div class="panel-title">2. Social Media Channels (Instagram, TikTok, Facebook)</div>
+        <div class="panel-title">
+          <span>2. Custom Buttons &amp; Featured Links</span>
+          <span style="font-size:10px;color:var(--warm-beige);font-weight:600;">(Add or Remove Buttons Anytime)</span>
+        </div>
+
+        <div id="custom-buttons-list" style="margin-bottom:16px;"></div>
+
+        <!-- Add Button Form -->
+        <div style="background:var(--espresso-deep);padding:16px;border-radius:14px;border:1px dashed var(--gold);">
+          <div style="font-size:11px;font-weight:800;color:var(--gold);margin-bottom:10px;letter-spacing:0.1em;">➕ ADD A NEW BUTTON</div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Button Title</label>
+              <input type="text" id="new-btn-title" placeholder="e.g. Order on Talabat" />
+            </div>
+            <div class="form-group">
+              <label>Subtitle / Description</label>
+              <input type="text" id="new-btn-sub" placeholder="e.g. Fast delivery to your door" />
+            </div>
+            <div class="form-group full">
+              <label>Button Link URL</label>
+              <input type="text" id="new-btn-url" placeholder="https://..." />
+            </div>
+          </div>
+          <button class="btn" onclick="addNewButton()" style="margin-top:4px;">➕ Add This Button</button>
+        </div>
+      </div>
+
+      <!-- 3. Social Media -->
+      <div class="panel-card">
+        <div class="panel-title">3. Social Media Channels (Instagram, TikTok, Facebook)</div>
         <div class="form-grid">
           <div class="form-group">
             <label>Instagram Handle</label>
@@ -314,8 +388,9 @@
         </div>
       </div>
 
+      <!-- 4. Footer Contact & Location -->
       <div class="panel-card">
-        <div class="panel-title">3. Footer Contact &amp; Location</div>
+        <div class="panel-title">4. Footer Contact &amp; Location</div>
         <div class="form-grid">
           <div class="form-group full">
             <label>Branch Address</label>
@@ -340,18 +415,27 @@
         </div>
       </div>
 
+      <!-- 5. How to Save / Publish -->
       <div class="panel-card">
-        <div class="panel-title">4. Publish Live to Customer QR Hub (GitHub Sync)</div>
+        <div class="panel-title">5. Save &amp; Publish Changes</div>
+
+        <div class="help-box">
+          <strong style="color:var(--gold);">💡 How to Save Changes:</strong><br>
+          • <strong>Easiest (No Token):</strong> Click <strong>"⬇ Download hub_config.json"</strong>, then go to your GitHub repo and drag it in!<br>
+          • <strong>Instant (1-Click):</strong> Paste your free GitHub Personal Access Token below (with <code>repo</code> scope from <a href="https://github.com/settings/tokens/new" target="_blank" style="color:var(--gold);">GitHub Tokens</a>). It stays saved in your browser, so clicking <strong>"🚀 Publish Changes Live Now"</strong> updates your live QR site instantly!
+        </div>
+
         <div class="form-grid">
           <div class="form-group">
             <label>Target GitHub Repo</label>
             <input type="text" id="gh-repo" value="MaxDailyCafe/MaxDialyDashboard" />
           </div>
           <div class="form-group">
-            <label>Owner Access Token (Saved Only In Your Browser)</label>
-            <input type="password" id="gh-token" placeholder="ghp_..." />
+            <label>Owner Access Token (Optional for 1-Click Publish)</label>
+            <input type="password" id="gh-token" placeholder="ghp_... (saved only in your browser)" oninput="localStorage.setItem('maxdaily_gh_token', this.value.trim())" />
           </div>
         </div>
+
         <div class="btn-bar">
           <button class="btn" onclick="publishToGitHub()">🚀 Publish Changes Live Now</button>
           <button class="btn secondary" onclick="downloadConfig()">⬇ Download hub_config.json</button>
@@ -369,7 +453,7 @@
   </main>
 
   <script>
-    // Owner PIN (Default: 2026 or whatever owner sets in localStorage)
+    // Owner PIN (Default: 2026)
     const SAVED_PIN = localStorage.getItem('maxdaily_owner_pin') || '2026';
 
     function unlockPanel() {
@@ -386,12 +470,20 @@
       document.getElementById('lock-screen').style.display = 'none';
     }
 
+    // Load saved GitHub token if any
+    const savedToken = localStorage.getItem('maxdaily_gh_token');
+    if (savedToken) document.getElementById('gh-token').value = savedToken;
+
     let CURRENT_CONFIG = null;
+    let CUSTOM_BUTTONS = [];
 
     fetch('./hub_config.json?t=' + Date.now())
       .then(r => r.json())
       .then(data => {
         CURRENT_CONFIG = data;
+        CUSTOM_BUTTONS = data.custom_buttons || [];
+        renderButtonsList();
+
         document.getElementById('cfg-website').value = (data.websites && data.websites[0]) ? data.websites[0].url : (data.brand.website_url || 'https://maxdaily.coffee');
         document.getElementById('cfg-rating').value = data.google_review.rating;
         document.getElementById('cfg-review-url').value = data.google_review.review_url;
@@ -409,6 +501,48 @@
       })
       .catch(() => {});
 
+    function renderButtonsList() {
+      const el = document.getElementById('custom-buttons-list');
+      if (!CUSTOM_BUTTONS || CUSTOM_BUTTONS.length === 0) {
+        el.innerHTML = '<div style="font-size:12px;color:var(--warm-beige);opacity:0.6;padding:8px 0;">No custom buttons yet. Use the form below to add one!</div>';
+        return;
+      }
+      el.innerHTML = CUSTOM_BUTTONS.map((btn, index) => `
+        <div class="button-row-item">
+          <div>
+            <div style="font-size:12px;font-weight:800;color:var(--gold);">${btn.title}</div>
+            <div style="font-size:10.5px;color:var(--warm-beige);opacity:0.75;">${btn.subtitle || ''}</div>
+          </div>
+          <div style="font-size:11px;color:var(--warm-beige);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
+            ${btn.url}
+          </div>
+          <button class="btn danger" style="padding:6px 10px;font-size:10px;" onclick="removeButton(${index})">🗑 Remove</button>
+        </div>
+      `).join('');
+    }
+
+    function addNewButton() {
+      const title = document.getElementById('new-btn-title').value.trim();
+      const sub = document.getElementById('new-btn-sub').value.trim();
+      const url = document.getElementById('new-btn-url').value.trim();
+      if (!title || !url) {
+        alert('Please enter both a Button Title and Link URL.');
+        return;
+      }
+      CUSTOM_BUTTONS.push({ id: 'btn_' + Date.now(), title: title.toUpperCase(), subtitle: sub, url: url });
+      document.getElementById('new-btn-title').value = '';
+      document.getElementById('new-btn-sub').value = '';
+      document.getElementById('new-btn-url').value = '';
+      renderButtonsList();
+      syncPreview();
+    }
+
+    function removeButton(index) {
+      CUSTOM_BUTTONS.splice(index, 1);
+      renderButtonsList();
+      syncPreview();
+    }
+
     function buildUpdatedConfig() {
       const cfg = CURRENT_CONFIG || {
         brand: { name: "MAX DAILY", subtitle: "SPECIALTY COFFEE & BAKERY", slogan: "A DAILY DOSE OF POSITIVITY", qr_target_url: "https://maxdailycafe.github.io/MaxDialyDashboard/" },
@@ -423,6 +557,7 @@
         menu_categories: []
       };
 
+      cfg.custom_buttons = CUSTOM_BUTTONS;
       cfg.websites[0].url = document.getElementById('cfg-website').value.trim();
       cfg.google_review.rating = document.getElementById('cfg-rating').value.trim();
       cfg.google_review.review_url = document.getElementById('cfg-review-url').value.trim();
