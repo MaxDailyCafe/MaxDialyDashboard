@@ -64,7 +64,7 @@
     {
       "id": "instagram",
       "platform": "Instagram",
-      "handle": "@maxdaily.coffee",
+      "handle": "@",
       "subtitle": "Daily pours, fresh bakes & community moments",
       "url": "https://instagram.com/maxdaily.coffee",
       "icon": "instagram"
@@ -72,7 +72,7 @@
     {
       "id": "tiktok",
       "platform": "TikTok",
-      "handle": "@maxdaily.coffee",
+      "handle": "",
       "subtitle": "Behind the bar & specialty coffee craft",
       "url": "https://tiktok.com/@maxdaily.coffee",
       "icon": "tiktok"
@@ -80,7 +80,7 @@
     {
       "id": "facebook",
       "platform": "Facebook",
-      "handle": "/maxdaily.coffee",
+      "handle": "",
       "subtitle": "Events, announcements & branch updates",
       "url": "https://facebook.com/maxdaily.coffee",
       "icon": "facebook"
