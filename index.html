@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>MAX DAILY — Specialty Coffee &amp; Bakery</title>
+  <meta name="description" content="MAX DAILY — Specialty Coffee & Bakery. A Daily Dose of Positivity. Official Website, Digital Menu, Social Media, Google Rating & Contact." />
+  <meta name="theme-color" content="#F4E9DC" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream-bg: #F4E9DC;
+      --cream-soft: #FAF4EC;
+      --warm-beige: #E9DDCD;
+      --kraft: #DFCBB2;
+      --espresso: #1A120D;
+      --espresso-card: #221710;
+      --coffee-brown: #77583C;
+      --gold: #D9AE7B;
+      --gold-deep: #B5854B;
+      --border-gold: rgba(181, 133, 75, 0.32);
+      --border-espresso: rgba(26, 18, 13, 0.1);
+      --shadow-luxury: 0 14px 34px rgba(26, 18, 13, 0.08);
+      --shadow-card: 0 6px 20px rgba(26, 18, 13, 0.06);
+      --transition: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--cream-bg);
+      background-image:
+        radial-gradient(circle at 50% 0%, rgba(217, 174, 123, 0.22) 0%, transparent 55%),
+        linear-gradient(180deg, #F7EFE4 0%, #F4E9DC 100%);
+      color: var(--espresso);
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.5;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .hub-container {
+      max-width: 460px;
+      margin: 0 auto;
+      padding: 24px 18px 36px;
+    }
+
+    /* ==========================================================================
+       1. LUXURY ESPRESSO ARCH HEADER WITH VERTICAL STACKED LOGO
+       ========================================================================== */
+    .hero-arch {
+      position: relative;
+      background: linear-gradient(180deg, #1E140E 0%, #160E09 100%);
+      border: 2px solid var(--gold);
+      border-radius: 180px 180px 26px 26px;
+      padding: 38px 24px 26px;
+      text-align: center;
+      box-shadow: 0 18px 40px rgba(26, 18, 13, 0.18);
+      margin-bottom: 18px;
+      overflow: hidden;
+    }
+
+    .hero-arch::before {
+      content: "";
+      position: absolute;
+      inset: 7px;
+      border: 1px solid rgba(217, 174, 123, 0.28);
+      border-radius: 173px 173px 20px 20px;
+      pointer-events: none;
+    }
+
+    /* MAX_DAILY_vertical_stacked_cream_gold_transparent */
+    .stacked-logo-svg {
+      width: 200px;
+      height: auto;
+      margin: 0 auto 10px;
+      display: block;
+      filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.35));
+    }
+
+    .gold-divider-bar {
+      width: 64px;
+      height: 3px;
+      background: var(--gold);
+      margin: 8px auto 12px;
+      border-radius: 2px;
+    }
+
+    .brand-subtitle {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      color: var(--warm-beige);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .brand-slogan-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(217, 174, 123, 0.13);
+      border: 1px solid rgba(217, 174, 123, 0.42);
+      border-radius: 999px;
+      font-size: 9.5px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      color: var(--cream-bg);
+      text-transform: uppercase;
+    }
+
+    /* ==========================================================================
+       2. PRACTICAL PRIMARY ACTIONS: WEBSITE & DIGITAL MENU
+       ========================================================================== */
+    .primary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .primary-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px 14px;
+      background: var(--cream-soft);
+      border: 1.5px solid var(--border-gold);
+      border-radius: 20px;
+      text-decoration: none;
+      color: var(--espresso);
+      box-shadow: var(--shadow-card);
+      transition: all 0.24s var(--transition);
+      cursor: pointer;
+    }
+
+    .primary-card.dark-accent {
+      background: var(--espresso);
+      color: var(--cream-bg);
+      border-color: var(--gold);
+    }
+
+    .primary-card:hover, .primary-card:active {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-luxury);
+      border-color: var(--gold-deep);
+    }
+
+    .primary-icon-box {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 10px;
+      background: rgba(217, 174, 123, 0.2);
+      color: var(--espresso);
+      border: 1px solid var(--border-gold);
+    }
+
+    .primary-card.dark-accent .primary-icon-box {
+      background: rgba(217, 174, 123, 0.15);
+      color: var(--gold);
+      border-color: rgba(217, 174, 123, 0.35);
+    }
+
+    .primary-card-title {
+      font-size: 12.5px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+
+    .primary-card-sub {
+      font-size: 10.5px;
+      font-weight: 600;
+      opacity: 0.72;
+    }
+
+    /* ==========================================================================
+       3. GOOGLE RATING SPOTLIGHT CARD
+       ========================================================================== */
+    .google-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 16px 18px;
+      background: var(--cream-soft);
+      border: 1.5px solid var(--gold-deep);
+      border-radius: 20px;
+      text-decoration: none;
+      color: var(--espresso);
+      box-shadow: var(--shadow-card);
+      margin-bottom: 20px;
+      transition: all 0.24s var(--transition);
+    }
+
+    .google-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-luxury);
+      background: #FFFFFF;
+    }
+
+    .google-left {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+
+    .google-badge-box {
+      background: var(--espresso);
+      color: var(--cream-bg);
+      border: 1.5px solid var(--gold);
+      border-radius: 14px;
+      padding: 8px 11px;
+      text-align: center;
+      min-width: 64px;
+    }
+
+    .google-score {
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1.05;
+    }
+
+    .google-stars {
+      font-size: 9.5px;
+      color: #FBBF24;
+      letter-spacing: 1px;
+      margin-top: 2px;
+    }
+
+    .google-title {
+      font-size: 12.5px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      color: var(--espresso);
+    }
+
+    .google-sub {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--coffee-brown);
+      margin-top: 2px;
+    }
+
+    .google-btn {
+      padding: 9px 13px;
+      background: var(--espresso);
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      border-radius: 11px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+      text-transform: uppercase;
+    }
+
+    /* ==========================================================================
+       4. SOCIAL MEDIA CHANNELS (INSTAGRAM, TIKTOK, FACEBOOK)
+       ========================================================================== */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 6px 0 12px;
+    }
+
+    .section-label span {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      color: var(--coffee-brown);
+      text-transform: uppercase;
+    }
+
+    .section-label::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--border-gold);
+    }
+
+    .social-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 26px;
+    }
+
+    .social-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px;
+      background: var(--cream-soft);
+      border: 1px solid var(--border-gold);
+      border-radius: 16px;
+      text-decoration: none;
+      color: var(--espresso);
+      box-shadow: var(--shadow-card);
+      transition: all 0.22s var(--transition);
+    }
+
+    .social-row:hover, .social-row:active {
+      transform: translateY(-2px);
+      border-color: var(--espresso);
+      background: #FFFFFF;
+    }
+
+    .social-left {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+
+    .social-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--espresso);
+      color: var(--gold);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .social-name {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      color: var(--espresso);
+    }
+
+    .social-handle {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--coffee-brown);
+    }
+
+    .social-arrow {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--warm-beige);
+      color: var(--espresso);
+      display: grid;
+      place-items: center;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    /* ==========================================================================
+       5. CONTACT & LOCATION FOOTER
+       ========================================================================== */
+    .contact-footer {
+      background: var(--espresso);
+      color: var(--cream-bg);
+      border: 1.5px solid var(--gold);
+      border-radius: 24px;
+      padding: 24px 20px 22px;
+      text-align: center;
+      box-shadow: 0 16px 36px rgba(26, 18, 13, 0.16);
+    }
+
+    .footer-header {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 18px;
+      text-align: left;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 11px 14px;
+      background: rgba(244, 233, 220, 0.06);
+      border: 1px solid rgba(217, 174, 123, 0.24);
+      border-radius: 13px;
+      color: var(--cream-bg);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      transition: background 0.2s ease;
+    }
+
+    .contact-item:hover {
+      background: rgba(217, 174, 123, 0.16);
+    }
+
+    .contact-item svg {
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .footer-signoff {
+      padding-top: 14px;
+      border-top: 1px solid rgba(217, 174, 123, 0.2);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: var(--gold);
+    }
+
+    /* ==========================================================================
+       DIGITAL MENU MODAL (SLIDE-UP SHEET)
+       ========================================================================== */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(26, 18, 13, 0.72);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-sheet {
+      width: 100%;
+      max-width: 480px;
+      max-height: 86vh;
+      background: var(--cream-bg);
+      color: var(--espresso);
+      border-top: 3px solid var(--gold-deep);
+      border-radius: 26px 26px 0 0;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 -16px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      background: var(--espresso);
+      color: var(--cream-bg);
+      border-bottom: 1px solid var(--gold);
+    }
+
+    .modal-title {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    .modal-close {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+      background: transparent;
+      color: var(--cream-bg);
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .modal-body {
+      padding: 18px 20px 30px;
+      overflow-y: auto;
+    }
+
+    .menu-cat-block {
+      margin-bottom: 22px;
+    }
+
+    .menu-cat-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 6px;
+      margin-bottom: 10px;
+      border-bottom: 1.5px solid var(--gold-deep);
+    }
+
+    .menu-cat-name {
+      font-size: 12.5px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      color: var(--espresso);
+    }
+
+    .menu-cols-labels {
+      display: flex;
+      gap: 14px;
+      font-size: 9.5px;
+      font-weight: 800;
+      color: var(--coffee-brown);
+    }
+
+    .menu-item-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 7px 0;
+      border-bottom: 1px dashed rgba(119, 88, 60, 0.25);
+    }
+
+    .menu-item-name {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--espresso);
+    }
+
+    .menu-item-desc {
+      font-size: 10.5px;
+      color: var(--coffee-brown);
+      margin-top: 1px;
+    }
+
+    .menu-item-prices {
+      display: flex;
+      gap: 14px;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--espresso);
+      flex-shrink: 0;
+    }
+
+    .menu-item-prices span {
+      min-width: 28px;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+
+  <main class="hub-container">
+    <!-- 1. Luxury Arch Header with MAX_DAILY_vertical_stacked_cream_gold_transparent -->
+    <header class="hero-arch">
+      <svg class="stacked-logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="170 210 670 380">
+        <path fill="#F4E9DC" d="M197.8155796007069 407.2853185595568V230.0H239.08966169917247L312.36157240797866 350.61473866760986H290.6153932070813L362.175557094157 230.0H403.44963919262256L403.87757589805517 407.2853185595568H357.6778981236335L357.2499614182009 300.26885959407747H365.15362761988433L311.7589637379128 389.8363771420405H289.50625505541666L234.4784371278808 300.26885959407747H244.01525737512858V407.2853185595568ZM424.39163558605 407.2853185595568 502.67657403231743 230.0H552.0814535340027L630.4449847564363 407.2853185595568H578.3938922459892L517.1478292408603 254.5146049373894H536.8329176907607L475.58685468563186 407.2853185595568ZM467.1849218125579 372.7717524783927 480.1016157517025 335.8469830834574H566.6827999637301L579.6780866790409 372.7717524783927ZM632.811030851628 407.2853185595568 710.3363672338742 299.5340459606808 710.1616952692409 335.2710844277854 635.5619701758189 230.0H692.0671017052255L739.6282215802264 298.5209869974833L715.724872439865 298.7742517382827L762.5087116801668 230.0H816.6208949416109L742.1783554005211 333.22748008908945V297.97948469128255L820.6556443820998 407.2853185595568H763.1199674771947L714.6157342882003 335.17500523931824L737.6632100176967 335.00033327468503L690.0934430157336 407.2853185595568Z"/>
+        <path fill="#D9AE7B" d="M190.8901716620674 568.8405319310039V460.4709141274238H242.13904018124254Q260.06008135649967 460.4709141274238 273.67035861610265 467.12256045496554Q287.2806358757056 473.77420678250735 294.92523967571924 485.8736992771096Q302.5698434757329 497.9731917717119 302.5698434757329 514.6557230292138Q302.5698434757329 531.2314821399746 294.92523967571924 543.3843607079475Q287.2806358757056 555.5372392759203 273.67035861610265 562.188885603462Q260.06008135649967 568.8405319310039 242.13904018124254 568.8405319310039ZM221.56513989250845 544.4383392257791H240.78306915596124Q250.10912871021102 544.4383392257791 257.01960058818656 540.8963582588833Q263.9300724661621 537.3543772919876 267.78168091249665 530.6360717859247Q271.63328935883123 523.9177662798619 271.63328935883123 514.6557230292138Q271.63328935883123 505.23886603884637 267.78168091249665 498.59796740264323Q263.9300724661621 491.9570687664401 257.01960058818656 488.4150877995443Q250.10912871021102 484.87310683264855 240.78306915596124 484.87310683264855H221.56513989250845ZM339.7623761794747 568.8405319310039 387.6157964633929 460.4709141274238H417.81563451389087L465.7170963907872 568.8405319310039H433.89970142854736L396.46167501007596 475.456014920066H408.49462578726474L371.0565993687934 568.8405319310039ZM365.9207299033222 547.743342408241 373.8163480901191 525.1722509082406H426.7410342303691L434.68469401014426 547.743342408241ZM508.5679655662763 568.8405319310039V460.4709141274238H539.2429337967174V568.8405319310039ZM595.108846069421 568.8405319310039V460.4709141274238H625.7838142998621V544.5451113725203H677.4433268509484V568.8405319310039ZM750.9903072562333 568.8405319310039V522.9941695913842L758.0050845976921 541.4119537903691L709.5429808545737 460.4709141274238H741.9903197364761L776.908687937405 519.1878424020009H758.1598983374115L793.339852424801 460.4709141274238H823.1126018883342L774.8640424386982 541.4119537903691L781.6652754866744 522.9941695913842V568.8405319310039Z"/>
+      </svg>
+      <div class="gold-divider-bar"></div>
+      <p class="brand-subtitle" id="brand-subtitle">SPECIALTY COFFEE &amp; BAKERY</p>
+      <div class="brand-slogan-pill" id="brand-slogan">
+        <span>✦</span> A DAILY DOSE OF POSITIVITY <span>✦</span>
+      </div>
+    </header>
+
+    <!-- 2. Practical Primary Actions: Website & Digital Menu -->
+    <section class="primary-grid">
+      <a class="primary-card dark-accent" id="btn-website" href="https://maxdaily.coffee" target="_blank" rel="noopener">
+        <div class="primary-icon-box">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <div class="primary-card-title">OFFICIAL WEBSITE</div>
+        <div class="primary-card-sub">Explore Our Story</div>
+      </a>
+
+      <button class="primary-card" onclick="openMenuModal()">
+        <div class="primary-icon-box">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
+        </div>
+        <div class="primary-card-title">DIGITAL MENU</div>
+        <div class="primary-card-sub">Coffee &amp; Bakery</div>
+      </button>
+    </section>
+
+    <!-- 3. Google Rating Card -->
+    <a class="google-card" id="google-review-card" href="https://search.google.com/local/writereview?placeid=MAX_DAILY_PLACE_ID" target="_blank" rel="noopener">
+      <div class="google-left">
+        <div class="google-badge-box">
+          <div class="google-score" id="google-rating-num">4.9</div>
+          <div class="google-stars">★★★★★</div>
+        </div>
+        <div>
+          <div class="google-title" id="google-cta-title">GOOGLE RATING &amp; REVIEWS</div>
+          <div class="google-sub" id="google-cta-subtitle">Tap to rate your experience on Google</div>
+        </div>
+      </div>
+      <div class="google-btn">RATE US ★</div>
+    </a>
+
+    <!-- 4. Social Media (Instagram, TikTok, Facebook) -->
+    <div class="section-label">
+      <span>FOLLOW MAX DAILY</span>
+    </div>
+    <section class="social-list" id="socials-container"></section>
+
+    <!-- 5. Contact & Location Listed in the Footer -->
+    <footer class="contact-footer">
+      <div class="footer-header">CONTACT &amp; LOCATION</div>
+      <div class="contact-list">
+        <a class="contact-item" id="footer-map" href="https://maps.google.com/?q=MAX+DAILY+Specialty+Coffee+and+Bakery" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span id="contact-address">Specialty Coffee District, Main Boulevard, Cairo</span>
+        </a>
+        <a class="contact-item" id="footer-phone" href="tel:+201000000000">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span id="contact-phone">+20 100 000 0000</span>
+        </a>
+        <a class="contact-item" id="footer-whatsapp" href="https://wa.me/201000000000" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          <span>WhatsApp Direct Order &amp; Support</span>
+        </a>
+        <div class="contact-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span id="contact-hours">Open Daily: 07:00 AM – 12:00 AM</span>
+        </div>
+      </div>
+      <div class="footer-signoff">BUT FIRST, MAX DAILY.</div>
+    </footer>
+  </main>
+
+  <!-- Digital Menu Modal -->
+  <div class="modal-backdrop" id="menu-modal" onclick="if(event.target.id==='menu-modal')closeMenuModal()">
+    <div class="modal-sheet">
+      <div class="modal-header">
+        <span class="modal-title">☕ MAX DAILY — MENU</span>
+        <button class="modal-close" onclick="closeMenuModal()">✕</button>
+      </div>
+      <div class="modal-body" id="menu-modal-content"></div>
+    </div>
+  </div>
+
+  <script>
+    let HUB_DATA = {
+      brand: {
+        name: "MAX DAILY",
+        subtitle: "SPECIALTY COFFEE & BAKERY",
+        slogan: "A DAILY DOSE OF POSITIVITY",
+        website_url: "https://maxdaily.coffee"
+      },
+      google_review: {
+        rating: "4.9",
+        cta_title: "GOOGLE RATING & REVIEWS",
+        cta_subtitle: "Tap to rate your experience on Google",
+        review_url: "https://search.google.com/local/writereview?placeid=MAX_DAILY_PLACE_ID"
+      },
+      social_media: [
+        {
+          id: "instagram",
+          platform: "Instagram",
+          handle: "@maxdaily.coffee",
+          url: "https://instagram.com/maxdaily.coffee",
+          icon: "instagram"
+        },
+        {
+          id: "tiktok",
+          platform: "TikTok",
+          handle: "@maxdaily.coffee",
+          url: "https://tiktok.com/@maxdaily.coffee",
+          icon: "tiktok"
+        },
+        {
+          id: "facebook",
+          platform: "Facebook",
+          handle: "/maxdaily.coffee",
+          url: "https://facebook.com/maxdaily.coffee",
+          icon: "facebook"
+        }
+      ],
+      location: {
+        address_line_1: "Specialty Coffee District, Main Boulevard",
+        address_line_2: "Cairo, Egypt",
+        hours: "Open Daily: 07:00 AM – 12:00 AM",
+        phone: "+20 100 000 0000",
+        whatsapp: "https://wa.me/201000000000?text=Hello%20MAX%20DAILY!",
+        google_maps_url: "https://maps.google.com/?q=MAX+DAILY+Specialty+Coffee+and+Bakery"
+      },
+      menu_categories: [
+        {
+          id: "signatures",
+          title: "MAX SIGNATURES",
+          columns: ["HOT", "ICED"],
+          items: [
+            { name: "MAX DAILY SIGNATURE", desc: "Salted caramel, roasted hazelnut & double shot", prices: ["125", "135"] },
+            { name: "PISTACHIO VELVET LATTE", desc: "House pistachio cream & double espresso", prices: ["135", "145"] },
+            { name: "SPANISH LATTE", desc: "Sweetened condensed milk & double espresso", prices: ["115", "125"] },
+            { name: "WHITE MOCHA BREW", desc: "Belgian white chocolate & rich espresso", prices: ["115", "125"] }
+          ]
+        },
+        {
+          id: "espresso_bar",
+          title: "ESPRESSO & MILK",
+          columns: ["HOT", "ICED"],
+          items: [
+            { name: "ESPRESSO / DOPPIO", desc: "Rich signature blend with velvety crema", prices: ["65", "—"] },
+            { name: "AMERICANO", desc: "Double shot espresso over hot water or ice", prices: ["75", "85"] },
+            { name: "FLAT WHITE", desc: "Double ristretto with thin micro-foam", prices: ["95", "—"] },
+            { name: "CAPPUCCINO", desc: "Bold espresso, steamed milk & airy foam", prices: ["95", "105"] },
+            { name: "CAFFE LATTE", desc: "Smooth daily dose with creamy steamed milk", prices: ["95", "105"] }
+          ]
+        },
+        {
+          id: "bakery_sweets",
+          title: "BAKERY & SWEETS",
+          columns: ["PRICE"],
+          items: [
+            { name: "FRENCH BUTTER CROISSANT", desc: "Flaky golden-baked laminated pastry", prices: ["85"] },
+            { name: "PISTACHIO CROISSANT", desc: "Twice-baked with house frangipane cream", prices: ["115"] },
+            { name: "SAN SEBASTIAN CHEESECAKE", desc: "Creamy Basque cheesecake + warm chocolate", prices: ["140"] },
+            { name: "ESPRESSO FUDGE BROWNIE", desc: "Rich dark chocolate chunk with sea salt", prices: ["95"] }
+          ]
+        }
+      ]
+    };
+
+    const SOCIAL_ICONS = {
+      instagram: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>`,
+      tiktok: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>`,
+      facebook: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>`
+    };
+
+    function renderHub() {
+      document.getElementById('brand-subtitle').textContent = HUB_DATA.brand.subtitle;
+      document.getElementById('brand-slogan').innerHTML = `<span>✦</span> ${HUB_DATA.brand.slogan} <span>✦</span>`;
+      if (HUB_DATA.websites && HUB_DATA.websites[0]) {
+        document.getElementById('btn-website').href = HUB_DATA.websites[0].url;
+      } else if (HUB_DATA.brand.website_url) {
+        document.getElementById('btn-website').href = HUB_DATA.brand.website_url;
+      }
+
+      document.getElementById('google-rating-num').textContent = HUB_DATA.google_review.rating;
+      document.getElementById('google-review-card').href = HUB_DATA.google_review.review_url;
+
+      const socialContainer = document.getElementById('socials-container');
+      socialContainer.innerHTML = HUB_DATA.social_media.map(soc => `
+        <a class="social-row" href="${soc.url}" target="_blank" rel="noopener">
+          <div class="social-left">
+            <div class="social-icon">${SOCIAL_ICONS[soc.icon] || SOCIAL_ICONS.instagram}</div>
+            <div>
+              <div class="social-name">${soc.platform}</div>
+              <div class="social-handle">${soc.handle}</div>
+            </div>
+          </div>
+          <div class="social-arrow">→</div>
+        </a>
+      `).join('');
+
+      document.getElementById('contact-address').textContent = `${HUB_DATA.location.address_line_1}, ${HUB_DATA.location.address_line_2}`;
+      document.getElementById('contact-phone').textContent = HUB_DATA.location.phone;
+      document.getElementById('contact-hours').textContent = HUB_DATA.location.hours;
+      document.getElementById('footer-map').href = HUB_DATA.location.google_maps_url;
+      document.getElementById('footer-phone').href = `tel:${HUB_DATA.location.phone.replace(/\s+/g, '')}`;
+      if (HUB_DATA.location.whatsapp) {
+        document.getElementById('footer-whatsapp').href = HUB_DATA.location.whatsapp;
+      }
+
+      const menuContent = document.getElementById('menu-modal-content');
+      menuContent.innerHTML = HUB_DATA.menu_categories.map(cat => `
+        <div class="menu-cat-block">
+          <div class="menu-cat-header">
+            <span class="menu-cat-name">${cat.title}</span>
+            <div class="menu-cols-labels">${cat.columns.map(c => `<span>${c}</span>`).join('')}</div>
+          </div>
+          ${cat.items.map(item => `
+            <div class="menu-item-row">
+              <div>
+                <div class="menu-item-name">${item.name}</div>
+                <div class="menu-item-desc">${item.desc}</div>
+              </div>
+              <div class="menu-item-prices">${item.prices.map(p => `<span>${p}</span>`).join('')}</div>
+            </div>
+          `).join('')}
+        </div>
+      `).join('');
+    }
+
+    function openMenuModal() {
+      document.getElementById('menu-modal').classList.add('open');
+    }
+
+    function closeMenuModal() {
+      document.getElementById('menu-modal').classList.remove('open');
+    }
+
+    renderHub();
+
+    if (window.location.protocol.startsWith('http')) {
+      fetch('./hub_config.json?t=' + Date.now())
+        .then(r => r.ok ? r.json() : null)
+        .then(data => {
+          if (data) {
+            HUB_DATA = data;
+            renderHub();
+          }
+        })
+        .catch(() => {});
+    }
+  </script>
+</body>
+</html>
