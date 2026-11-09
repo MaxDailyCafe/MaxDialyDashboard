@@ -22,9 +22,10 @@
       --gold-deep: #B5854B;
       --border-gold: rgba(181, 133, 75, 0.32);
       --border-espresso: rgba(26, 18, 13, 0.1);
-      --shadow-luxury: 0 14px 34px rgba(26, 18, 13, 0.08);
+      --shadow-luxury: 0 16px 36px rgba(26, 18, 13, 0.12);
       --shadow-card: 0 6px 20px rgba(26, 18, 13, 0.06);
-      --transition: cubic-bezier(0.22, 1, 0.36, 1);
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-motion: cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 
     * {
@@ -37,33 +38,147 @@
     body {
       background-color: var(--cream-bg);
       background-image:
-        radial-gradient(circle at 50% 0%, rgba(217, 174, 123, 0.22) 0%, transparent 55%),
+        radial-gradient(circle at 50% 0%, rgba(217, 174, 123, 0.25) 0%, transparent 55%),
         linear-gradient(180deg, #F7EFE4 0%, #F4E9DC 100%);
       color: var(--espresso);
       font-family: 'Montserrat', sans-serif;
       line-height: 1.5;
       min-height: 100vh;
       overflow-x: hidden;
-    }
-
-    .hub-container {
-      max-width: 460px;
-      margin: 0 auto;
-      padding: 24px 18px 36px;
+      position: relative;
     }
 
     /* ==========================================================================
-       1. LUXURY ESPRESSO ARCH HEADER WITH VERTICAL STACKED LOGO
+       1. TACTILE PAPER GRAIN TEXTURE (motionsites.ai / feTurbulence)
+       ========================================================================== */
+    .paper-grain {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 9990;
+      pointer-events: none;
+      opacity: 0.32;
+      mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.45  0 0 0 0 0.42  0 0 0 0 0.38  0 0 0 0 0.35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    /* ==========================================================================
+       2. CUSTOM MAGNETIC RING CURSOR (Desktop Fine Pointers)
+       ========================================================================== */
+    @media (pointer: fine) {
+      body, a, button, input {
+        cursor: none !important;
+      }
+      .cursor-ring {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        border: 1.5px solid var(--gold-deep);
+        pointer-events: none;
+        z-index: 10000;
+        transform: translate3d(-100px, -100px, 0);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: width 0.28s var(--ease-out-expo),
+                    height 0.28s var(--ease-out-expo),
+                    background-color 0.28s var(--ease-out-expo),
+                    border-color 0.28s var(--ease-out-expo),
+                    box-shadow 0.28s var(--ease-out-expo);
+      }
+      .cursor-ring.hover-active {
+        width: 52px;
+        height: 52px;
+        background: rgba(217, 174, 123, 0.16);
+        border-color: var(--espresso);
+        box-shadow: 0 4px 16px rgba(26, 18, 13, 0.12);
+      }
+      .cursor-ring.disc-active {
+        width: 68px;
+        height: 68px;
+        background: var(--espresso);
+        border: 1.5px solid var(--gold);
+        box-shadow: 0 8px 24px rgba(26, 18, 13, 0.35);
+      }
+      .cursor-disc-label {
+        display: none;
+        font-size: 8.5px;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        color: var(--gold);
+        text-transform: uppercase;
+        pointer-events: none;
+        user-select: none;
+      }
+      .cursor-ring.disc-active .cursor-disc-label {
+        display: block;
+      }
+      .cursor-dot {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--gold-deep);
+        pointer-events: none;
+        z-index: 10001;
+        transform: translate3d(-100px, -100px, 0);
+        transition: opacity 0.2s ease, transform 0.05s linear;
+      }
+      .cursor-ring.disc-active + .cursor-dot {
+        opacity: 0;
+      }
+    }
+    @media (pointer: coarse) {
+      .cursor-ring, .cursor-dot {
+        display: none !important;
+      }
+    }
+
+    /* ==========================================================================
+       3. MASKED TYPOGRAPHY & REVEAL SYSTEM (No cheap opacity fades)
+       ========================================================================== */
+    .mask-wrap {
+      overflow: hidden;
+      display: inline-block;
+      vertical-align: bottom;
+    }
+    .mask-reveal {
+      display: block;
+      transform: translateY(115%);
+      transition: transform 0.9s var(--ease-out-expo);
+      will-change: transform;
+    }
+    .page-loaded .mask-reveal {
+      transform: translateY(0%);
+    }
+
+    .hub-container {
+      max-width: 470px;
+      margin: 0 auto;
+      padding: 24px 18px 40px;
+      perspective: 1200px;
+    }
+
+    /* ==========================================================================
+       4. 3D HERO ARCH WITH DEPTH LAYERS & SPRING TILT
        ========================================================================== */
     .hero-arch {
       position: relative;
-      background: linear-gradient(180deg, #1E140E 0%, #160E09 100%);
+      background: linear-gradient(180deg, #1F150F 0%, #150D08 100%);
       border: 2px solid var(--gold);
-      border-radius: 180px 180px 26px 26px;
-      padding: 38px 24px 26px;
+      border-radius: 180px 180px 28px 28px;
+      padding: 38px 24px 28px;
       text-align: center;
-      box-shadow: 0 18px 40px rgba(26, 18, 13, 0.18);
-      margin-bottom: 18px;
+      box-shadow: 0 20px 44px rgba(26, 18, 13, 0.22);
+      margin-bottom: 20px;
+      transform-style: preserve-3d;
+      will-change: transform;
       overflow: hidden;
     }
 
@@ -71,26 +186,41 @@
       content: "";
       position: absolute;
       inset: 7px;
-      border: 1px solid rgba(217, 174, 123, 0.28);
-      border-radius: 173px 173px 20px 20px;
+      border: 1px solid rgba(217, 174, 123, 0.3);
+      border-radius: 173px 173px 22px 22px;
       pointer-events: none;
+    }
+
+    .hero-arch .specular-sheen {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      background: radial-gradient(circle at 50% 30%, rgba(217, 174, 123, 0.2) 0%, transparent 65%);
+      opacity: 0.6;
+      transition: opacity 0.3s ease;
+      mix-blend-mode: screen;
     }
 
     /* MAX_DAILY_vertical_stacked_cream_gold_transparent */
     .stacked-logo-svg {
-      width: 200px;
+      width: 205px;
       height: auto;
       margin: 0 auto 10px;
       display: block;
-      filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.35));
+      transform: translateZ(40px);
+      filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.5));
+      transition: transform 0.2s var(--ease-out-expo);
     }
 
     .gold-divider-bar {
-      width: 64px;
+      width: 68px;
       height: 3px;
       background: var(--gold);
-      margin: 8px auto 12px;
+      margin: 10px auto 14px;
       border-radius: 2px;
+      transform: translateZ(24px);
+      box-shadow: 0 2px 8px rgba(217, 174, 123, 0.4);
     }
 
     .brand-subtitle {
@@ -99,32 +229,59 @@
       letter-spacing: 0.24em;
       color: var(--warm-beige);
       text-transform: uppercase;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
+      transform: translateZ(20px);
     }
 
     .brand-slogan-pill {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 6px 16px;
-      background: rgba(217, 174, 123, 0.13);
-      border: 1px solid rgba(217, 174, 123, 0.42);
+      padding: 7px 18px;
+      background: rgba(217, 174, 123, 0.14);
+      border: 1px solid rgba(217, 174, 123, 0.45);
       border-radius: 999px;
       font-size: 9.5px;
       font-weight: 800;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.18em;
       color: var(--cream-bg);
       text-transform: uppercase;
+      transform: translateZ(30px);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
     }
 
     /* ==========================================================================
-       2. PRACTICAL PRIMARY ACTIONS: WEBSITE & DIGITAL MENU
+       5. 3D TILT CARDS & SPECULAR SHINE ENGINE
+       ========================================================================== */
+    .tilt-card {
+      position: relative;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+
+    .tilt-sheen {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      mix-blend-mode: overlay;
+      z-index: 5;
+    }
+
+    .tilt-card:hover .tilt-sheen {
+      opacity: 1;
+    }
+
+    /* ==========================================================================
+       6. PRIMARY ACTIONS: WEBSITE & DIGITAL MENU
        ========================================================================== */
     .primary-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 16px;
+      gap: 14px;
+      margin-bottom: 18px;
     }
 
     .primary-card {
@@ -133,15 +290,15 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 20px 14px;
+      padding: 22px 14px;
       background: var(--cream-soft);
       border: 1.5px solid var(--border-gold);
-      border-radius: 20px;
+      border-radius: 22px;
       text-decoration: none;
       color: var(--espresso);
       box-shadow: var(--shadow-card);
-      transition: all 0.24s var(--transition);
-      cursor: pointer;
+      position: relative;
+      overflow: hidden;
     }
 
     .primary-card.dark-accent {
@@ -150,36 +307,40 @@
       border-color: var(--gold);
     }
 
-    .primary-card:hover, .primary-card:active {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-luxury);
-      border-color: var(--gold-deep);
+    .primary-card-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transform: translateZ(20px);
     }
 
     .primary-icon-box {
-      width: 46px;
-      height: 46px;
-      border-radius: 14px;
+      width: 48px;
+      height: 48px;
+      border-radius: 15px;
       display: grid;
       place-items: center;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       background: rgba(217, 174, 123, 0.2);
       color: var(--espresso);
       border: 1px solid var(--border-gold);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
     }
 
     .primary-card.dark-accent .primary-icon-box {
-      background: rgba(217, 174, 123, 0.15);
+      background: rgba(217, 174, 123, 0.16);
       color: var(--gold);
-      border-color: rgba(217, 174, 123, 0.35);
+      border-color: rgba(217, 174, 123, 0.38);
     }
 
     .primary-card-title {
       font-size: 12.5px;
       font-weight: 800;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.11em;
       text-transform: uppercase;
-      margin-bottom: 3px;
+      margin-bottom: 4px;
     }
 
     .primary-card-sub {
@@ -189,7 +350,7 @@
     }
 
     /* ==========================================================================
-       3. GOOGLE RATING SPOTLIGHT CARD
+       7. GOOGLE RATING SPOTLIGHT CARD
        ========================================================================== */
     .google-card {
       display: flex;
@@ -203,20 +364,15 @@
       text-decoration: none;
       color: var(--espresso);
       box-shadow: var(--shadow-card);
-      margin-bottom: 20px;
-      transition: all 0.24s var(--transition);
-    }
-
-    .google-card:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-luxury);
-      background: #FFFFFF;
+      margin-bottom: 22px;
+      overflow: hidden;
     }
 
     .google-left {
       display: flex;
       align-items: center;
       gap: 13px;
+      transform: translateZ(16px);
     }
 
     .google-badge-box {
@@ -227,6 +383,7 @@
       padding: 8px 11px;
       text-align: center;
       min-width: 64px;
+      box-shadow: 0 4px 12px rgba(26, 18, 13, 0.18);
     }
 
     .google-score {
@@ -244,7 +401,7 @@
     }
 
     .google-title {
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 800;
       letter-spacing: 0.06em;
       color: var(--espresso);
@@ -268,22 +425,23 @@
       letter-spacing: 0.08em;
       white-space: nowrap;
       text-transform: uppercase;
+      transform: translateZ(18px);
     }
 
     /* ==========================================================================
-       4. SOCIAL MEDIA CHANNELS (INSTAGRAM, TIKTOK, FACEBOOK)
+       8. SOCIAL MEDIA CHANNELS (INSTAGRAM, TIKTOK, FACEBOOK)
        ========================================================================== */
     .section-label {
       display: flex;
       align-items: center;
       gap: 10px;
-      margin: 6px 0 12px;
+      margin: 8px 0 14px;
     }
 
     .section-label span {
       font-size: 10.5px;
       font-weight: 800;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.22em;
       color: var(--coffee-brown);
       text-transform: uppercase;
     }
@@ -298,8 +456,8 @@
     .social-list {
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      margin-bottom: 26px;
+      gap: 11px;
+      margin-bottom: 28px;
     }
 
     .social-row {
@@ -309,23 +467,18 @@
       padding: 14px 16px;
       background: var(--cream-soft);
       border: 1px solid var(--border-gold);
-      border-radius: 16px;
+      border-radius: 18px;
       text-decoration: none;
       color: var(--espresso);
       box-shadow: var(--shadow-card);
-      transition: all 0.22s var(--transition);
-    }
-
-    .social-row:hover, .social-row:active {
-      transform: translateY(-2px);
-      border-color: var(--espresso);
-      background: #FFFFFF;
+      overflow: hidden;
     }
 
     .social-left {
       display: flex;
       align-items: center;
       gap: 13px;
+      transform: translateZ(14px);
     }
 
     .social-icon {
@@ -337,6 +490,7 @@
       display: grid;
       place-items: center;
       flex-shrink: 0;
+      box-shadow: 0 4px 10px rgba(26, 18, 13, 0.15);
     }
 
     .social-name {
@@ -353,8 +507,8 @@
     }
 
     .social-arrow {
-      width: 30px;
-      height: 30px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       background: var(--warm-beige);
       color: var(--espresso);
@@ -362,19 +516,29 @@
       place-items: center;
       font-size: 13px;
       font-weight: 800;
+      transform: translateZ(14px);
+      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+
+    .social-row:hover .social-arrow {
+      background: var(--espresso);
+      color: var(--gold);
+      transform: translateZ(18px) translateX(3px);
     }
 
     /* ==========================================================================
-       5. CONTACT & LOCATION FOOTER
+       9. CONTACT & LOCATION FOOTER
        ========================================================================== */
     .contact-footer {
       background: var(--espresso);
       color: var(--cream-bg);
       border: 1.5px solid var(--gold);
-      border-radius: 24px;
-      padding: 24px 20px 22px;
+      border-radius: 26px;
+      padding: 26px 20px 22px;
       text-align: center;
-      box-shadow: 0 16px 36px rgba(26, 18, 13, 0.16);
+      box-shadow: 0 18px 40px rgba(26, 18, 13, 0.2);
+      transform-style: preserve-3d;
+      overflow: hidden;
     }
 
     .footer-header {
@@ -383,34 +547,37 @@
       letter-spacing: 0.22em;
       color: var(--gold);
       text-transform: uppercase;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
+      transform: translateZ(18px);
     }
 
     .contact-list {
       display: flex;
       flex-direction: column;
       gap: 10px;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
       text-align: left;
+      transform: translateZ(14px);
     }
 
     .contact-item {
       display: flex;
       align-items: center;
       gap: 12px;
-      padding: 11px 14px;
+      padding: 12px 14px;
       background: rgba(244, 233, 220, 0.06);
       border: 1px solid rgba(217, 174, 123, 0.24);
-      border-radius: 13px;
+      border-radius: 14px;
       color: var(--cream-bg);
       text-decoration: none;
       font-size: 12px;
       font-weight: 600;
-      transition: background 0.2s ease;
+      transition: background 0.2s ease, border-color 0.2s ease;
     }
 
     .contact-item:hover {
       background: rgba(217, 174, 123, 0.16);
+      border-color: var(--gold);
     }
 
     .contact-item svg {
@@ -420,29 +587,34 @@
 
     .footer-signoff {
       padding-top: 14px;
-      border-top: 1px solid rgba(217, 174, 123, 0.2);
-      font-size: 10px;
+      border-top: 1px solid rgba(217, 174, 123, 0.22);
+      font-size: 10.5px;
       font-weight: 700;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.2em;
       color: var(--gold);
+      transform: translateZ(16px);
     }
 
     /* ==========================================================================
-       DIGITAL MENU MODAL (SLIDE-UP SHEET)
+       10. DIGITAL MENU MODAL (SPRING-DAMPED DRAWER)
        ========================================================================== */
     .modal-backdrop {
       position: fixed;
       inset: 0;
       z-index: 200;
-      background: rgba(26, 18, 13, 0.72);
-      backdrop-filter: blur(8px);
-      display: none;
+      background: rgba(26, 18, 13, 0.76);
+      backdrop-filter: blur(10px);
+      opacity: 0;
+      pointer-events: none;
+      display: flex;
       align-items: flex-end;
       justify-content: center;
+      transition: opacity 0.35s var(--ease-out-expo);
     }
 
     .modal-backdrop.open {
-      display: flex;
+      opacity: 1;
+      pointer-events: auto;
     }
 
     .modal-sheet {
@@ -452,18 +624,24 @@
       background: var(--cream-bg);
       color: var(--espresso);
       border-top: 3px solid var(--gold-deep);
-      border-radius: 26px 26px 0 0;
+      border-radius: 28px 28px 0 0;
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      box-shadow: 0 -16px 40px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 -18px 46px rgba(0, 0, 0, 0.4);
+      transform: translateY(105%);
+      transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .modal-backdrop.open .modal-sheet {
+      transform: translateY(0%);
     }
 
     .modal-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 16px 20px;
+      padding: 16px 22px;
       background: var(--espresso);
       color: var(--cream-bg);
       border-bottom: 1px solid var(--gold);
@@ -484,17 +662,24 @@
       border: 1px solid var(--gold);
       background: transparent;
       color: var(--cream-bg);
-      cursor: pointer;
       font-size: 15px;
+      display: grid;
+      place-items: center;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .modal-close:hover {
+      background: rgba(217, 174, 123, 0.2);
+      transform: rotate(90deg);
     }
 
     .modal-body {
-      padding: 18px 20px 30px;
+      padding: 20px 22px 34px;
       overflow-y: auto;
     }
 
     .menu-cat-block {
-      margin-bottom: 22px;
+      margin-bottom: 24px;
     }
 
     .menu-cat-header {
@@ -502,7 +687,7 @@
       align-items: center;
       justify-content: space-between;
       padding-bottom: 6px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       border-bottom: 1.5px solid var(--gold-deep);
     }
 
@@ -526,7 +711,7 @@
       align-items: baseline;
       justify-content: space-between;
       gap: 10px;
-      padding: 7px 0;
+      padding: 8px 0;
       border-bottom: 1px dashed rgba(119, 88, 60, 0.25);
     }
 
@@ -539,7 +724,7 @@
     .menu-item-desc {
       font-size: 10.5px;
       color: var(--coffee-brown);
-      margin-top: 1px;
+      margin-top: 2px;
     }
 
     .menu-item-prices {
@@ -559,41 +744,64 @@
 </head>
 <body>
 
+  <!-- Tactile Paper Grain Overlay (motionsites.ai / feTurbulence) -->
+  <div class="paper-grain" aria-hidden="true"></div>
+
+  <!-- Custom Magnetic Ring Cursor (Desktop) -->
+  <div class="cursor-ring" id="cursor-ring" aria-hidden="true">
+    <span class="cursor-disc-label" id="cursor-disc-label">OPEN</span>
+  </div>
+  <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+
   <main class="hub-container">
     <!-- 1. Luxury Arch Header with MAX_DAILY_vertical_stacked_cream_gold_transparent -->
-    <header class="hero-arch">
-      <svg class="stacked-logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="170 210 670 380">
-        <path fill="#F4E9DC" d="M197.8155796007069 407.2853185595568V230.0H239.08966169917247L312.36157240797866 350.61473866760986H290.6153932070813L362.175557094157 230.0H403.44963919262256L403.87757589805517 407.2853185595568H357.6778981236335L357.2499614182009 300.26885959407747H365.15362761988433L311.7589637379128 389.8363771420405H289.50625505541666L234.4784371278808 300.26885959407747H244.01525737512858V407.2853185595568ZM424.39163558605 407.2853185595568 502.67657403231743 230.0H552.0814535340027L630.4449847564363 407.2853185595568H578.3938922459892L517.1478292408603 254.5146049373894H536.8329176907607L475.58685468563186 407.2853185595568ZM467.1849218125579 372.7717524783927 480.1016157517025 335.8469830834574H566.6827999637301L579.6780866790409 372.7717524783927ZM632.811030851628 407.2853185595568 710.3363672338742 299.5340459606808 710.1616952692409 335.2710844277854 635.5619701758189 230.0H692.0671017052255L739.6282215802264 298.5209869974833L715.724872439865 298.7742517382827L762.5087116801668 230.0H816.6208949416109L742.1783554005211 333.22748008908945V297.97948469128255L820.6556443820998 407.2853185595568H763.1199674771947L714.6157342882003 335.17500523931824L737.6632100176967 335.00033327468503L690.0934430157336 407.2853185595568Z"/>
-        <path fill="#D9AE7B" d="M190.8901716620674 568.8405319310039V460.4709141274238H242.13904018124254Q260.06008135649967 460.4709141274238 273.67035861610265 467.12256045496554Q287.2806358757056 473.77420678250735 294.92523967571924 485.8736992771096Q302.5698434757329 497.9731917717119 302.5698434757329 514.6557230292138Q302.5698434757329 531.2314821399746 294.92523967571924 543.3843607079475Q287.2806358757056 555.5372392759203 273.67035861610265 562.188885603462Q260.06008135649967 568.8405319310039 242.13904018124254 568.8405319310039ZM221.56513989250845 544.4383392257791H240.78306915596124Q250.10912871021102 544.4383392257791 257.01960058818656 540.8963582588833Q263.9300724661621 537.3543772919876 267.78168091249665 530.6360717859247Q271.63328935883123 523.9177662798619 271.63328935883123 514.6557230292138Q271.63328935883123 505.23886603884637 267.78168091249665 498.59796740264323Q263.9300724661621 491.9570687664401 257.01960058818656 488.4150877995443Q250.10912871021102 484.87310683264855 240.78306915596124 484.87310683264855H221.56513989250845ZM339.7623761794747 568.8405319310039 387.6157964633929 460.4709141274238H417.81563451389087L465.7170963907872 568.8405319310039H433.89970142854736L396.46167501007596 475.456014920066H408.49462578726474L371.0565993687934 568.8405319310039ZM365.9207299033222 547.743342408241 373.8163480901191 525.1722509082406H426.7410342303691L434.68469401014426 547.743342408241ZM508.5679655662763 568.8405319310039V460.4709141274238H539.2429337967174V568.8405319310039ZM595.108846069421 568.8405319310039V460.4709141274238H625.7838142998621V544.5451113725203H677.4433268509484V568.8405319310039ZM750.9903072562333 568.8405319310039V522.9941695913842L758.0050845976921 541.4119537903691L709.5429808545737 460.4709141274238H741.9903197364761L776.908687937405 519.1878424020009H758.1598983374115L793.339852424801 460.4709141274238H823.1126018883342L774.8640424386982 541.4119537903691L781.6652754866744 522.9941695913842V568.8405319310039Z"/>
-      </svg>
+    <header class="hero-arch tilt-card" id="hero-arch">
+      <div class="specular-sheen" id="hero-sheen"></div>
+      <div class="mask-wrap">
+        <svg class="stacked-logo-svg mask-reveal" xmlns="http://www.w3.org/2000/svg" viewBox="170 210 670 380">
+          <path fill="#F4E9DC" d="M197.8155796007069 407.2853185595568V230.0H239.08966169917247L312.36157240797866 350.61473866760986H290.6153932070813L362.175557094157 230.0H403.44963919262256L403.87757589805517 407.2853185595568H357.6778981236335L357.2499614182009 300.26885959407747H365.15362761988433L311.7589637379128 389.8363771420405H289.50625505541666L234.4784371278808 300.26885959407747H244.01525737512858V407.2853185595568ZM424.39163558605 407.2853185595568 502.67657403231743 230.0H552.0814535340027L630.4449847564363 407.2853185595568H578.3938922459892L517.1478292408603 254.5146049373894H536.8329176907607L475.58685468563186 407.2853185595568ZM467.1849218125579 372.7717524783927 480.1016157517025 335.8469830834574H566.6827999637301L579.6780866790409 372.7717524783927ZM632.811030851628 407.2853185595568 710.3363672338742 299.5340459606808 710.1616952692409 335.2710844277854 635.5619701758189 230.0H692.0671017052255L739.6282215802264 298.5209869974833L715.724872439865 298.7742517382827L762.5087116801668 230.0H816.6208949416109L742.1783554005211 333.22748008908945V297.97948469128255L820.6556443820998 407.2853185595568H763.1199674771947L714.6157342882003 335.17500523931824L737.6632100176967 335.00033327468503L690.0934430157336 407.2853185595568Z"/>
+          <path fill="#D9AE7B" d="M190.8901716620674 568.8405319310039V460.4709141274238H242.13904018124254Q260.06008135649967 460.4709141274238 273.67035861610265 467.12256045496554Q287.2806358757056 473.77420678250735 294.92523967571924 485.8736992771096Q302.5698434757329 497.9731917717119 302.5698434757329 514.6557230292138Q302.5698434757329 531.2314821399746 294.92523967571924 543.3843607079475Q287.2806358757056 555.5372392759203 273.67035861610265 562.188885603462Q260.06008135649967 568.8405319310039 242.13904018124254 568.8405319310039ZM221.56513989250845 544.4383392257791H240.78306915596124Q250.10912871021102 544.4383392257791 257.01960058818656 540.8963582588833Q263.9300724661621 537.3543772919876 267.78168091249665 530.6360717859247Q271.63328935883123 523.9177662798619 271.63328935883123 514.6557230292138Q271.63328935883123 505.23886603884637 267.78168091249665 498.59796740264323Q263.9300724661621 491.9570687664401 257.01960058818656 488.4150877995443Q250.10912871021102 484.87310683264855 240.78306915596124 484.87310683264855H221.56513989250845ZM339.7623761794747 568.8405319310039 387.6157964633929 460.4709141274238H417.81563451389087L465.7170963907872 568.8405319310039H433.89970142854736L396.46167501007596 475.456014920066H408.49462578726474L371.0565993687934 568.8405319310039ZM365.9207299033222 547.743342408241 373.8163480901191 525.1722509082406H426.7410342303691L434.68469401014426 547.743342408241ZM508.5679655662763 568.8405319310039V460.4709141274238H539.2429337967174V568.8405319310039ZM595.108846069421 568.8405319310039V460.4709141274238H625.7838142998621V544.5451113725203H677.4433268509484V568.8405319310039ZM750.9903072562333 568.8405319310039V522.9941695913842L758.0050845976921 541.4119537903691L709.5429808545737 460.4709141274238H741.9903197364761L776.908687937405 519.1878424020009H758.1598983374115L793.339852424801 460.4709141274238H823.1126018883342L774.8640424386982 541.4119537903691L781.6652754866744 522.9941695913842V568.8405319310039Z"/>
+        </svg>
+      </div>
       <div class="gold-divider-bar"></div>
-      <p class="brand-subtitle" id="brand-subtitle">SPECIALTY COFFEE &amp; BAKERY</p>
-      <div class="brand-slogan-pill" id="brand-slogan">
-        <span>✦</span> A DAILY DOSE OF POSITIVITY <span>✦</span>
+      <div class="mask-wrap">
+        <p class="brand-subtitle mask-reveal" id="brand-subtitle">SPECIALTY COFFEE &amp; BAKERY</p>
+      </div>
+      <div style="margin-top: 4px;">
+        <div class="brand-slogan-pill" id="brand-slogan">
+          <span>✦</span> A DAILY DOSE OF POSITIVITY <span>✦</span>
+        </div>
       </div>
     </header>
 
     <!-- 2. Practical Primary Actions: Website & Digital Menu -->
     <section class="primary-grid">
-      <a class="primary-card dark-accent" id="btn-website" href="https://maxdaily.coffee" target="_blank" rel="noopener">
-        <div class="primary-icon-box">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      <a class="primary-card dark-accent tilt-card" id="btn-website" href="https://maxdaily.coffee" target="_blank" rel="noopener" data-cursor="disc" data-disc="VISIT">
+        <div class="tilt-sheen"></div>
+        <div class="primary-card-content">
+          <div class="primary-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div class="primary-card-title">OFFICIAL WEBSITE</div>
+          <div class="primary-card-sub">Explore Our Story</div>
         </div>
-        <div class="primary-card-title">OFFICIAL WEBSITE</div>
-        <div class="primary-card-sub">Explore Our Story</div>
       </a>
 
-      <button class="primary-card" onclick="openMenuModal()">
-        <div class="primary-icon-box">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
+      <button class="primary-card tilt-card" onclick="openMenuModal()" data-cursor="disc" data-disc="MENU">
+        <div class="tilt-sheen"></div>
+        <div class="primary-card-content">
+          <div class="primary-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
+          </div>
+          <div class="primary-card-title">DIGITAL MENU</div>
+          <div class="primary-card-sub">Coffee &amp; Bakery</div>
         </div>
-        <div class="primary-card-title">DIGITAL MENU</div>
-        <div class="primary-card-sub">Coffee &amp; Bakery</div>
       </button>
     </section>
 
     <!-- 3. Google Rating Card -->
-    <a class="google-card" id="google-review-card" href="https://search.google.com/local/writereview?placeid=MAX_DAILY_PLACE_ID" target="_blank" rel="noopener">
+    <a class="google-card tilt-card" id="google-review-card" href="https://search.google.com/local/writereview?placeid=MAX_DAILY_PLACE_ID" target="_blank" rel="noopener" data-cursor="hover">
+      <div class="tilt-sheen"></div>
       <div class="google-left">
         <div class="google-badge-box">
           <div class="google-score" id="google-rating-num">4.9</div>
@@ -607,6 +815,14 @@
       <div class="google-btn">RATE US ★</div>
     </a>
 
+    <!-- 3.5 Custom Dynamic Buttons -->
+    <div id="custom-buttons-wrap" style="display:none;margin-bottom:18px;">
+      <div class="section-label">
+        <span id="custom-buttons-label">FEATURED LINKS</span>
+      </div>
+      <div class="social-list" id="custom-buttons-container"></div>
+    </div>
+
     <!-- 4. Social Media (Instagram, TikTok, Facebook) -->
     <div class="section-label">
       <span>FOLLOW MAX DAILY</span>
@@ -614,18 +830,19 @@
     <section class="social-list" id="socials-container"></section>
 
     <!-- 5. Contact & Location Listed in the Footer -->
-    <footer class="contact-footer">
+    <footer class="contact-footer tilt-card" id="contact-footer">
+      <div class="tilt-sheen"></div>
       <div class="footer-header">CONTACT &amp; LOCATION</div>
       <div class="contact-list">
-        <a class="contact-item" id="footer-map" href="https://maps.google.com/?q=MAX+DAILY+Specialty+Coffee+and+Bakery" target="_blank" rel="noopener">
+        <a class="contact-item" id="footer-map" href="https://maps.google.com/?q=MAX+DAILY+Specialty+Coffee+and+Bakery" target="_blank" rel="noopener" data-cursor="hover">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           <span id="contact-address">Specialty Coffee District, Main Boulevard, Cairo</span>
         </a>
-        <a class="contact-item" id="footer-phone" href="tel:+201000000000">
+        <a class="contact-item" id="footer-phone" href="tel:+201000000000" data-cursor="hover">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           <span id="contact-phone">+20 100 000 0000</span>
         </a>
-        <a class="contact-item" id="footer-whatsapp" href="https://wa.me/201000000000" target="_blank" rel="noopener">
+        <a class="contact-item" id="footer-whatsapp" href="https://wa.me/201000000000" target="_blank" rel="noopener" data-cursor="hover">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
           <span>WhatsApp Direct Order &amp; Support</span>
         </a>
@@ -750,9 +967,34 @@
       document.getElementById('google-rating-num').textContent = HUB_DATA.google_review.rating;
       document.getElementById('google-review-card').href = HUB_DATA.google_review.review_url;
 
+      // Render Custom Dynamic Buttons
+      const customWrap = document.getElementById('custom-buttons-wrap');
+      const customContainer = document.getElementById('custom-buttons-container');
+      if (HUB_DATA.custom_buttons && HUB_DATA.custom_buttons.length > 0) {
+        customWrap.style.display = 'block';
+        customContainer.innerHTML = HUB_DATA.custom_buttons.map((btn, i) => `
+          <a class="social-row tilt-card" href="${btn.url}" target="_blank" rel="noopener" data-cursor="hover" style="border-left: 3.5px solid var(--gold-deep);">
+            <div class="tilt-sheen"></div>
+            <div class="social-left">
+              <div class="social-icon" style="background:var(--cream-bg);color:var(--espresso);border:1px solid var(--border-gold);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+              </div>
+              <div>
+                <div class="social-name">${btn.title}</div>
+                <div class="social-handle">${btn.subtitle || btn.url.replace(/^https?:\/\//, '')}</div>
+              </div>
+            </div>
+            <div class="social-arrow">→</div>
+          </a>
+        `).join('');
+      } else {
+        customWrap.style.display = 'none';
+      }
+
       const socialContainer = document.getElementById('socials-container');
       socialContainer.innerHTML = HUB_DATA.social_media.map(soc => `
-        <a class="social-row" href="${soc.url}" target="_blank" rel="noopener">
+        <a class="social-row tilt-card" href="${soc.url}" target="_blank" rel="noopener" data-cursor="hover">
+          <div class="tilt-sheen"></div>
           <div class="social-left">
             <div class="social-icon">${SOCIAL_ICONS[soc.icon] || SOCIAL_ICONS.instagram}</div>
             <div>
@@ -791,6 +1033,9 @@
           `).join('')}
         </div>
       `).join('');
+
+      // Refresh 3D tilt bindings for newly injected DOM
+      init3DTilt();
     }
 
     function openMenuModal() {
@@ -803,6 +1048,11 @@
 
     renderHub();
 
+    // Trigger masked entrance reveals
+    requestAnimationFrame(() => {
+      document.body.classList.add('page-loaded');
+    });
+
     if (window.location.protocol.startsWith('http')) {
       fetch('./hub_config.json?t=' + Date.now())
         .then(r => r.ok ? r.json() : null)
@@ -814,6 +1064,152 @@
         })
         .catch(() => {});
     }
+
+    /* ==========================================================================
+       MOTIONSITES.AI PHYSICS ENGINE: 3D SPRING TILT & MAGNETIC CURSOR
+       ========================================================================== */
+    const cursorRing = document.getElementById('cursor-ring');
+    const cursorDot = document.getElementById('cursor-dot');
+    const cursorDiscLabel = document.getElementById('cursor-disc-label');
+
+    let mouse = { x: -100, y: -100, isOver: false };
+    let ringPos = { x: -100, y: -100 };
+    let dotPos = { x: -100, y: -100 };
+    let tiltRegistry = [];
+
+    window.addEventListener('mousemove', (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+      mouse.isOver = true;
+    }, { passive: true });
+
+    function init3DTilt() {
+      const cards = document.querySelectorAll('.tilt-card');
+      tiltRegistry = Array.from(cards).map(card => {
+        const sheen = card.querySelector('.tilt-sheen, .specular-sheen');
+        const state = {
+          el: card,
+          sheen: sheen,
+          targetRx: 0,
+          targetRy: 0,
+          targetTz: 0,
+          currRx: 0,
+          currRy: 0,
+          currTz: 0,
+          sheenX: 50,
+          sheenY: 50,
+          currSheenX: 50,
+          currSheenY: 50
+        };
+
+        card.addEventListener('mouseenter', () => {
+          state.targetTz = card.classList.contains('hero-arch') ? 8 : 12;
+          const cursorType = card.getAttribute('data-cursor');
+          if (cursorRing) {
+            if (cursorType === 'disc') {
+              cursorRing.classList.add('disc-active');
+              if (cursorDiscLabel) cursorDiscLabel.textContent = card.getAttribute('data-disc') || 'OPEN';
+            } else if (cursorType === 'hover' || card.tagName === 'A' || card.tagName === 'BUTTON') {
+              cursorRing.classList.add('hover-active');
+            }
+          }
+        });
+
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const cx = rect.left + rect.width / 2;
+          const cy = rect.top + rect.height / 2;
+          const dx = (e.clientX - cx) / (rect.width / 2);
+          const dy = (e.clientY - cy) / (rect.height / 2);
+
+          const maxRot = card.classList.contains('hero-arch') ? 7 : 10;
+          state.targetRx = -dy * maxRot;
+          state.targetRy = dx * maxRot;
+
+          state.sheenX = ((e.clientX - rect.left) / rect.width) * 100;
+          state.sheenY = ((e.clientY - rect.top) / rect.height) * 100;
+        });
+
+        card.addEventListener('mouseleave', () => {
+          state.targetRx = 0;
+          state.targetRy = 0;
+          state.targetTz = 0;
+          if (cursorRing) {
+            cursorRing.classList.remove('disc-active');
+            cursorRing.classList.remove('hover-active');
+          }
+        });
+
+        return state;
+      });
+    }
+
+    // Support mobile device gyroscope tilt (iOS / Android)
+    if (window.DeviceOrientationEvent) {
+      window.addEventListener('deviceorientation', (e) => {
+        if (e.beta === null || e.gamma === null) return;
+        const tiltX = Math.max(-12, Math.min(12, (e.beta - 45) * 0.4));
+        const tiltY = Math.max(-12, Math.min(12, e.gamma * 0.4));
+        const heroState = tiltRegistry.find(s => s.el.id === 'hero-arch');
+        if (heroState) {
+          heroState.targetRx = -tiltX;
+          heroState.targetRy = tiltY;
+        }
+      }, { passive: true });
+    }
+
+    // High performance RAF loop using critical damping 1 - Math.exp(-k * dt)
+    let lastTime = performance.now();
+    function physicsTick(now) {
+      const dt = Math.min((now - lastTime) / 1000, 0.1);
+      lastTime = now;
+
+      // Spring physics cursor
+      if (mouse.isOver) {
+        const ringK = 20;
+        const ringEase = 1 - Math.exp(-ringK * dt);
+        ringPos.x += (mouse.x - ringPos.x) * ringEase;
+        ringPos.y += (mouse.y - ringPos.y) * ringEase;
+
+        const dotK = 48;
+        const dotEase = 1 - Math.exp(-dotK * dt);
+        dotPos.x += (mouse.x - dotPos.x) * dotEase;
+        dotPos.y += (mouse.y - dotPos.y) * dotEase;
+
+        if (cursorRing) {
+          cursorRing.style.transform = `translate3d(${ringPos.x}px, ${ringPos.y}px, 0) translate(-50%, -50%)`;
+        }
+        if (cursorDot) {
+          cursorDot.style.transform = `translate3d(${dotPos.x}px, ${dotPos.y}px, 0) translate(-50%, -50%)`;
+        }
+      }
+
+      // Spring physics 3D tilt
+      const cardK = 14;
+      const cardEase = 1 - Math.exp(-cardK * dt);
+      const sheenK = 10;
+      const sheenEase = 1 - Math.exp(-sheenK * dt);
+
+      for (let i = 0; i < tiltRegistry.length; i++) {
+        const item = tiltRegistry[i];
+        item.currRx += (item.targetRx - item.currRx) * cardEase;
+        item.currRy += (item.targetRy - item.currRy) * cardEase;
+        item.currTz += (item.targetTz - item.currTz) * cardEase;
+
+        item.el.style.transform = `perspective(1000px) rotateX(${item.currRx.toFixed(2)}deg) rotateY(${item.currRy.toFixed(2)}deg) translateZ(${item.currTz.toFixed(1)}px)`;
+
+        if (item.sheen) {
+          item.currSheenX += (item.sheenX - item.currSheenX) * sheenEase;
+          item.currSheenY += (item.sheenY - item.currSheenY) * sheenEase;
+          item.sheen.style.background = `radial-gradient(circle at ${item.currSheenX.toFixed(1)}% ${item.currSheenY.toFixed(1)}%, rgba(255, 255, 255, 0.28) 0%, transparent 65%)`;
+        }
+      }
+
+      requestAnimationFrame(physicsTick);
+    }
+    requestAnimationFrame(physicsTick);
+
+    init3DTilt();
   </script>
 </body>
 </html>
