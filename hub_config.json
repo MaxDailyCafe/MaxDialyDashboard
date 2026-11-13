@@ -274,5 +274,12 @@
       ]
     }
   ],
-  "custom_buttons": []
+  "custom_buttons": [
+    {
+      "id": "btn_1794604788762",
+      "title": "LOYALLTY CARD",
+      "subtitle": "BE ONE OF OUR SPECIALS",
+      "url": "Digital loyalty stamp cards for MAX DAILY specialty coffee & bakery customers, offering visit stamps, rewards, and store updates."
+    }
+  ]
 }
