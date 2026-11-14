@@ -12,6 +12,7 @@
       --espresso: #1A120D;
       --espresso-deep: #110B08;
       --charcoal: #241912;
+      --charcoal-light: #2E2118;
       --cream: #F4E9DC;
       --cream-soft: #FAF4EC;
       --warm-beige: #E9DDCD;
@@ -20,6 +21,8 @@
       --coffee-brown: #77583C;
       --border-gold: rgba(217, 174, 123, 0.32);
       --red: #EF4444;
+      --green: #10B981;
+      --blue: #3B82F6;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -115,7 +118,7 @@
       display: grid;
       grid-template-columns: 1fr 440px;
       gap: 28px;
-      max-width: 1320px;
+      max-width: 1400px;
       margin: 0 auto;
       padding: 28px 32px;
     }
@@ -129,7 +132,7 @@
       border: 1px solid var(--border-gold);
       border-radius: 20px;
       padding: 24px;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
 
     .panel-title {
@@ -152,8 +155,15 @@
       gap: 14px;
     }
 
+    @media (max-width: 640px) {
+      .form-grid { grid-template-columns: 1fr; }
+    }
+
     .form-group {
-      margin-bottom: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 12px;
     }
 
     .form-group.full {
@@ -161,82 +171,159 @@
     }
 
     label {
-      display: block;
-      font-size: 10.5px;
+      font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.1em;
-      color: var(--warm-beige);
+      letter-spacing: 0.08em;
+      color: var(--gold);
       text-transform: uppercase;
-      margin-bottom: 6px;
     }
 
-    input {
+    input, select, textarea {
       width: 100%;
-      padding: 11px 14px;
-      border-radius: 10px;
-      border: 1px solid var(--border-gold);
       background: var(--espresso-deep);
+      border: 1px solid rgba(217, 174, 123, 0.4);
+      border-radius: 10px;
+      padding: 10px 14px;
       color: var(--cream);
       font-family: inherit;
-      font-size: 12.5px;
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.2s;
     }
 
-    input:focus {
-      outline: none;
+    input:focus, select:focus, textarea:focus {
       border-color: var(--gold);
+    }
+
+    .color-picker-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .color-picker-row input[type="color"] {
+      width: 48px;
+      height: 40px;
+      padding: 2px;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: var(--gold);
+      color: var(--espresso-deep);
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: transform 0.15s, opacity 0.15s, background 0.15s;
+    }
+
+    .btn:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+
+    .btn.secondary {
+      background: rgba(217, 174, 123, 0.16);
+      color: var(--gold);
+      border: 1px solid var(--gold);
+    }
+
+    .btn.danger {
+      background: rgba(239, 68, 68, 0.2);
+      color: #F87171;
+      border: 1px solid #EF4444;
+    }
+
+    .btn.success {
+      background: #10B981;
+      color: #FFFFFF;
+    }
+
+    .btn.small {
+      padding: 6px 12px;
+      font-size: 10px;
     }
 
     .btn-bar {
       display: flex;
-      flex-wrap: wrap;
       gap: 12px;
-      margin-top: 10px;
+      margin-top: 14px;
+      flex-wrap: wrap;
     }
 
-    .btn {
-      padding: 12px 18px;
-      border-radius: 12px;
-      border: 1.5px solid var(--gold);
-      background: var(--gold);
-      color: var(--espresso-deep);
-      font-family: inherit;
-      font-size: 11.5px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .btn.secondary {
-      background: transparent;
-      color: var(--gold);
-    }
-
-    .btn.danger {
-      background: rgba(239, 68, 68, 0.15);
-      border-color: var(--red);
-      color: var(--red);
-    }
-
-    .btn.danger:hover {
-      background: var(--red);
-      color: #fff;
-    }
-
-    /* Custom Button Row */
-    .button-row-item {
-      display: grid;
-      grid-template-columns: 1fr 1fr auto;
-      gap: 10px;
-      align-items: center;
-      padding: 12px;
+    /* Section & Button Item Cards */
+    .section-card {
       background: var(--espresso-deep);
+      border: 1.5px solid var(--border-gold);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    .section-header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(217, 174, 123, 0.18);
+      margin-bottom: 14px;
+    }
+
+    .button-item {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 10px 14px;
+      background: var(--charcoal);
       border: 1px solid var(--border-gold);
       border-radius: 12px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
+    }
+
+    .button-icon-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(217, 174, 123, 0.15);
+      color: var(--gold);
+      display: grid;
+      place-items: center;
+      font-size: 14px;
+    }
+
+    .button-info {
+      overflow: hidden;
+    }
+
+    .button-info-title {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--gold);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .button-info-sub {
+      font-size: 10.5px;
+      color: var(--warm-beige);
+      opacity: 0.75;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .help-box {
@@ -271,102 +358,188 @@
     }
 
     .status-toast {
-      display: none;
-      margin-top: 12px;
-      padding: 12px 16px;
+      padding: 12px;
       border-radius: 10px;
-      background: rgba(74, 222, 128, 0.15);
-      border: 1px solid #4ADE80;
-      color: #4ADE80;
       font-size: 12px;
       font-weight: 700;
+      text-align: center;
+      margin-top: 14px;
+      display: none;
     }
   </style>
 </head>
 <body>
 
-  <!-- Owner PIN Lock Gate -->
+  <!-- Owner Lock Screen -->
   <div id="lock-screen">
     <div class="lock-box">
-      <div style="font-size:24px;margin-bottom:10px;">☕</div>
+      <div style="font-size:36px;margin-bottom:12px;">🔒</div>
       <div class="lock-title">MAX DAILY OWNER PANEL</div>
-      <div class="lock-sub">Enter your Owner PIN to access dashboard settings</div>
-      <input type="password" id="owner-pin" class="pin-input" placeholder="••••" maxlength="8" onkeydown="if(event.key==='Enter')unlockPanel()" />
-      <button class="btn" style="width:100%;justify-content:center;" onclick="unlockPanel()">UNLOCK ACCESS</button>
-      <div id="pin-err" style="color:#F87171;font-size:11px;font-weight:700;margin-top:10px;display:none;">Incorrect Owner PIN (Default: 2026)</div>
+      <div class="lock-sub">Enter owner PIN to unlock dashboard controls</div>
+      <input type="password" id="owner-pin" class="pin-input" placeholder="••••" maxlength="8" onkeypress="if(event.key==='Enter')unlockPanel()" />
+      <button class="btn" style="width:100%;" onclick="unlockPanel()">Unlock Control Panel</button>
+      <div id="pin-err" style="color:var(--red);font-size:11px;font-weight:700;margin-top:12px;display:none;">Incorrect PIN. Try again.</div>
     </div>
   </div>
 
+  <!-- Admin Top Bar -->
   <header class="admin-header">
     <div class="admin-brand">
-      <strong style="font-size:17px;letter-spacing:0.14em;">MAX DAILY</strong>
-      <span class="admin-badge">OWNER CONTROL PANEL</span>
+      <div style="font-weight:900;letter-spacing:0.18em;font-size:16px;">MAX DAILY</div>
+      <div class="admin-badge">PRIVATE OWNER STUDIO</div>
     </div>
-    <a href="./index.html" target="_blank" style="color:var(--gold);font-size:12px;font-weight:700;text-decoration:none;">Open Public Customer Hub ↗</a>
+    <div style="display:flex;gap:10px;">
+      <button class="btn secondary small" onclick="syncPreview()">🔄 Refresh Preview</button>
+      <a href="./index.html" target="_blank" class="btn small">🌐 Open Live Hub</a>
+    </div>
   </header>
 
+  <!-- Main Split Studio Layout -->
   <main class="studio-grid">
-    <!-- Left Column: Controls -->
     <div>
-      <!-- 1. Core Links -->
+
+      <!-- 1. Background Color & Visual Theme -->
       <div class="panel-card">
-        <div class="panel-title">1. Website, Menu &amp; Google Rating</div>
+        <div class="panel-title">
+          <span>🎨 1. Background Color &amp; Visual Theme</span>
+          <span style="font-size:10px;color:var(--warm-beige);font-weight:600;">LIVE PREVIEW UPDATES</span>
+        </div>
         <div class="form-grid">
           <div class="form-group">
+            <label>Background Color (Solid / Base)</label>
+            <div class="color-picker-row">
+              <input type="color" id="theme-bg" value="#F4E9DC" onchange="document.getElementById('theme-bg-hex').value = this.value; syncPreview();" />
+              <input type="text" id="theme-bg-hex" value="#F4E9DC" oninput="document.getElementById('theme-bg').value = this.value; syncPreview();" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Card Background Color</label>
+            <div class="color-picker-row">
+              <input type="color" id="theme-card-bg" value="#FAF4EC" onchange="document.getElementById('theme-card-bg-hex').value = this.value; syncPreview();" />
+              <input type="text" id="theme-card-bg-hex" value="#FAF4EC" oninput="document.getElementById('theme-card-bg').value = this.value; syncPreview();" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Gradient Top Color</label>
+            <div class="color-picker-row">
+              <input type="color" id="theme-grad-start" value="#F7EFE4" onchange="document.getElementById('theme-grad-start-hex').value = this.value; syncPreview();" />
+              <input type="text" id="theme-grad-start-hex" value="#F7EFE4" oninput="document.getElementById('theme-grad-start').value = this.value; syncPreview();" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Gradient Bottom Color</label>
+            <div class="color-picker-row">
+              <input type="color" id="theme-grad-end" value="#F4E9DC" onchange="document.getElementById('theme-grad-end-hex').value = this.value; syncPreview();" />
+              <input type="text" id="theme-grad-end-hex" value="#F4E9DC" oninput="document.getElementById('theme-grad-end').value = this.value; syncPreview();" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Espresso Text / Dark Accents</label>
+            <div class="color-picker-row">
+              <input type="color" id="theme-espresso" value="#1A120D" onchange="document.getElementById('theme-espresso-hex').value = this.value; syncPreview();" />
+              <input type="text" id="theme-espresso-hex" value="#1A120D" oninput="document.getElementById('theme-espresso').value = this.value; syncPreview();" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Luxury Gold Accent</label>
+            <div class="color-picker-row">
+              <input type="color" id="theme-gold" value="#D9AE7B" onchange="document.getElementById('theme-gold-hex').value = this.value; syncPreview();" />
+              <input type="text" id="theme-gold-hex" value="#D9AE7B" oninput="document.getElementById('theme-gold').value = this.value; syncPreview();" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Manage Dynamic Sections & Buttons -->
+      <div class="panel-card">
+        <div class="panel-title">
+          <span>📑 2. Custom Sections &amp; Buttons</span>
+          <button class="btn small success" onclick="openAddSectionDialog()">+ Add New Section</button>
+        </div>
+
+        <div id="sections-container-admin">
+          <!-- Dynamically generated sections will appear here -->
+        </div>
+
+        <!-- Add Button to Section Form -->
+        <div style="background:var(--espresso-deep);border:1.5px dashed var(--gold);border-radius:16px;padding:18px;margin-top:16px;">
+          <div style="font-size:12px;font-weight:800;color:var(--gold);margin-bottom:12px;text-transform:uppercase;">
+            ➕ Add a Button to Any Section
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Target Section</label>
+              <select id="new-btn-target-section">
+                <!-- Populated dynamically -->
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Button Icon</label>
+              <select id="new-btn-icon">
+                <option value="award">Award / Loyalty</option>
+                <option value="gift">Gift / Rewards</option>
+                <option value="coffee">Coffee / Menu</option>
+                <option value="globe">Globe / Website</option>
+                <option value="whatsapp">WhatsApp</option>
+                <option value="phone">Phone Call</option>
+                <option value="map">Map Location</option>
+                <option value="instagram">Instagram</option>
+                <option value="star">Star / Rating</option>
+                <option value="link">General Link</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Button Title (e.g. LOYALTY CARD)</label>
+              <input type="text" id="new-btn-title" placeholder="LOYALTY CARD" />
+            </div>
+            <div class="form-group">
+              <label>Subtitle / Description</label>
+              <input type="text" id="new-btn-sub" placeholder="COLLECT STAMPS & EARN REWARDS" />
+            </div>
+            <div class="form-group full">
+              <label>Link Destination URL</label>
+              <input type="text" id="new-btn-url" placeholder="https://... or tel:... or mailto:..." />
+            </div>
+            <div class="form-group">
+              <label>Optional Badge (e.g. NEW, VIP, 20% OFF)</label>
+              <input type="text" id="new-btn-badge" placeholder="NEW" />
+            </div>
+            <div class="form-group" style="justify-content:flex-end;">
+              <button class="btn" style="height:42px;" onclick="addNewButtonToSection()">Add Button Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Primary Top Actions (Website & Digital Menu) -->
+      <div class="panel-card">
+        <div class="panel-title">3. Primary Actions (Website &amp; Menu)</div>
+        <div class="form-grid">
+          <div class="form-group full">
             <label>Official Website URL</label>
             <input type="text" id="cfg-website" value="https://maxdaily.coffee" oninput="syncPreview()" />
           </div>
           <div class="form-group">
-            <label>Google Star Rating</label>
+            <label>Google Rating Score</label>
             <input type="text" id="cfg-rating" value="4.9" oninput="syncPreview()" />
           </div>
-          <div class="form-group full">
-            <label>Google Review Link (Direct 5-Star Review Page)</label>
+          <div class="form-group">
+            <label>Google Maps Place Review Link</label>
             <input type="text" id="cfg-review-url" value="https://search.google.com/local/writereview?placeid=MAX_DAILY_PLACE_ID" oninput="syncPreview()" />
           </div>
         </div>
       </div>
 
-      <!-- 2. Custom Buttons (Add & Remove) -->
+      <!-- 4. Social Media Channels -->
       <div class="panel-card">
-        <div class="panel-title">
-          <span>2. Custom Buttons &amp; Featured Links</span>
-          <span style="font-size:10px;color:var(--warm-beige);font-weight:600;">(Add or Remove Buttons Anytime)</span>
-        </div>
-
-        <div id="custom-buttons-list" style="margin-bottom:16px;"></div>
-
-        <!-- Add Button Form -->
-        <div style="background:var(--espresso-deep);padding:16px;border-radius:14px;border:1px dashed var(--gold);">
-          <div style="font-size:11px;font-weight:800;color:var(--gold);margin-bottom:10px;letter-spacing:0.1em;">➕ ADD A NEW BUTTON</div>
-          <div class="form-grid">
-            <div class="form-group">
-              <label>Button Title</label>
-              <input type="text" id="new-btn-title" placeholder="e.g. Order on Talabat" />
-            </div>
-            <div class="form-group">
-              <label>Subtitle / Description</label>
-              <input type="text" id="new-btn-sub" placeholder="e.g. Fast delivery to your door" />
-            </div>
-            <div class="form-group full">
-              <label>Button Link URL</label>
-              <input type="text" id="new-btn-url" placeholder="https://..." />
-            </div>
-          </div>
-          <button class="btn" onclick="addNewButton()" style="margin-top:4px;">➕ Add This Button</button>
-        </div>
-      </div>
-
-      <!-- 3. Social Media -->
-      <div class="panel-card">
-        <div class="panel-title">3. Social Media Channels (Instagram, TikTok, Facebook)</div>
+        <div class="panel-title">4. Social Media Channels</div>
         <div class="form-grid">
           <div class="form-group">
             <label>Instagram Handle</label>
             <input type="text" id="cfg-ig-handle" value="@maxdaily.coffee" oninput="syncPreview()" />
           </div>
           <div class="form-group">
-            <label>Instagram Link</label>
+            <label>Instagram URL</label>
             <input type="text" id="cfg-ig-url" value="https://instagram.com/maxdaily.coffee" oninput="syncPreview()" />
           </div>
           <div class="form-group">
@@ -374,55 +547,68 @@
             <input type="text" id="cfg-tt-handle" value="@maxdaily.coffee" oninput="syncPreview()" />
           </div>
           <div class="form-group">
-            <label>TikTok Link</label>
+            <label>TikTok URL</label>
             <input type="text" id="cfg-tt-url" value="https://tiktok.com/@maxdaily.coffee" oninput="syncPreview()" />
           </div>
           <div class="form-group">
-            <label>Facebook Handle</label>
+            <label>Facebook Name</label>
             <input type="text" id="cfg-fb-handle" value="/maxdaily.coffee" oninput="syncPreview()" />
           </div>
           <div class="form-group">
-            <label>Facebook Link</label>
+            <label>Facebook URL</label>
             <input type="text" id="cfg-fb-url" value="https://facebook.com/maxdaily.coffee" oninput="syncPreview()" />
           </div>
         </div>
       </div>
 
-      <!-- 4. Footer Contact & Location -->
+      <!-- 5. Footer Contact & Location Buttons -->
       <div class="panel-card">
-        <div class="panel-title">4. Footer Contact &amp; Location</div>
+        <div class="panel-title">
+          <span>5. Footer Contact &amp; Location Control</span>
+        </div>
         <div class="form-grid">
           <div class="form-group full">
-            <label>Branch Address</label>
+            <label>Store Address</label>
             <input type="text" id="cfg-address" value="Specialty Coffee District, Main Boulevard, Cairo, Egypt" oninput="syncPreview()" />
           </div>
           <div class="form-group">
-            <label>Phone Number</label>
-            <input type="text" id="cfg-phone" value="+20 100 000 0000" oninput="syncPreview()" />
+            <label>Phone Number (Call Button)</label>
+            <input type="text" id="cfg-phone" value="012336665" oninput="syncPreview()" />
           </div>
           <div class="form-group">
-            <label>WhatsApp Link</label>
-            <input type="text" id="cfg-whatsapp" value="https://wa.me/201000000000" oninput="syncPreview()" />
+            <label>WhatsApp Link (Chat Button)</label>
+            <input type="text" id="cfg-whatsapp" value="https://wa.me/201000000000?text=Hello%20MAX%20DAILY!" oninput="syncPreview()" />
           </div>
           <div class="form-group">
             <label>Opening Hours</label>
-            <input type="text" id="cfg-hours" value="Open Daily: 07:00 AM – 12:00 AM" oninput="syncPreview()" />
+            <input type="text" id="cfg-hours" value="Daily: 07:00 AM – 12:00 AM" oninput="syncPreview()" />
           </div>
           <div class="form-group">
-            <label>Google Maps Link</label>
+            <label>Google Maps Direction URL</label>
             <input type="text" id="cfg-maps" value="https://maps.google.com/?q=MAX+DAILY+Specialty+Coffee+and+Bakery" oninput="syncPreview()" />
+          </div>
+        </div>
+
+        <div style="margin-top:16px;padding-top:14px;border-top:1px solid rgba(217,174,123,0.2);">
+          <div style="font-size:11px;font-weight:800;color:var(--gold);margin-bottom:10px;">EXTRA FOOTER CONTACT BUTTONS</div>
+          <div id="footer-buttons-list"></div>
+          
+          <div style="display:flex;gap:10px;margin-top:10px;">
+            <input type="text" id="new-footer-btn-title" placeholder="Button Name (e.g. Email Us)" style="flex:1;" />
+            <input type="text" id="new-footer-btn-url" placeholder="URL / mailto:" style="flex:2;" />
+            <button class="btn small" onclick="addFooterContactButton()">+ Add</button>
           </div>
         </div>
       </div>
 
-      <!-- 5. How to Save / Publish -->
+      <!-- 6. Save & Publish Changes -->
       <div class="panel-card">
-        <div class="panel-title">5. Save &amp; Publish Changes</div>
+        <div class="panel-title">6. Save &amp; Publish Changes Live</div>
 
         <div class="help-box">
           <strong style="color:var(--gold);">💡 How to Save Changes:</strong><br>
-          • <strong>Easiest (No Token):</strong> Click <strong>"⬇ Download hub_config.json"</strong>, then go to your GitHub repo and drag it in!<br>
-          • <strong>Instant (1-Click):</strong> Paste your free GitHub Personal Access Token below (with <code>repo</code> scope from <a href="https://github.com/settings/tokens/new" target="_blank" style="color:var(--gold);">GitHub Tokens</a>). It stays saved in your browser, so clicking <strong>"🚀 Publish Changes Live Now"</strong> updates your live QR site instantly!
+          • <strong>Instant 1-Click Publish:</strong> Paste your GitHub Personal Access Token (PAT) below. It stays safely saved in your own browser's localStorage. Clicking <strong>"🚀 Publish Changes Live Now"</strong> commits directly to your repository and updates the live site instantly without opening GitHub!<br>
+          • <strong>Manual (No Token):</strong> Click <strong>"⬇ Download hub_config.json"</strong>, then drag it directly into your GitHub repo.
         </div>
 
         <div class="form-grid">
@@ -431,13 +617,13 @@
             <input type="text" id="gh-repo" value="MaxDailyCafe/MaxDialyDashboard" />
           </div>
           <div class="form-group">
-            <label>Owner Access Token (Optional for 1-Click Publish)</label>
+            <label>Owner Access Token (Personal Access Token)</label>
             <input type="password" id="gh-token" placeholder="ghp_... (saved only in your browser)" oninput="localStorage.setItem('maxdaily_gh_token', this.value.trim())" />
           </div>
         </div>
 
         <div class="btn-bar">
-          <button class="btn" onclick="publishToGitHub()">🚀 Publish Changes Live Now</button>
+          <button class="btn" style="padding:12px 24px;font-size:13px;" onclick="publishToGitHub()">🚀 Publish Changes Live Now</button>
           <button class="btn secondary" onclick="downloadConfig()">⬇ Download hub_config.json</button>
         </div>
         <div id="status-msg" class="status-toast"></div>
@@ -475,71 +661,259 @@
     if (savedToken) document.getElementById('gh-token').value = savedToken;
 
     let CURRENT_CONFIG = null;
-    let CUSTOM_BUTTONS = [];
+    let SECTIONS = [];
+    let FOOTER_BUTTONS = [];
 
+    // Fetch configuration
     fetch('./hub_config.json?t=' + Date.now())
       .then(r => r.json())
       .then(data => {
         CURRENT_CONFIG = data;
-        CUSTOM_BUTTONS = data.custom_buttons || [];
-        renderButtonsList();
 
+        // Initialize Theme Pickers
+        if (data.theme) {
+          if (data.theme.bg_color) {
+            document.getElementById('theme-bg').value = data.theme.bg_color;
+            document.getElementById('theme-bg-hex').value = data.theme.bg_color;
+          }
+          if (data.theme.card_bg) {
+            document.getElementById('theme-card-bg').value = data.theme.card_bg;
+            document.getElementById('theme-card-bg-hex').value = data.theme.card_bg;
+          }
+          if (data.theme.bg_gradient_start) {
+            document.getElementById('theme-grad-start').value = data.theme.bg_gradient_start;
+            document.getElementById('theme-grad-start-hex').value = data.theme.bg_gradient_start;
+          }
+          if (data.theme.bg_gradient_end) {
+            document.getElementById('theme-grad-end').value = data.theme.bg_gradient_end;
+            document.getElementById('theme-grad-end-hex').value = data.theme.bg_gradient_end;
+          }
+          if (data.theme.espresso) {
+            document.getElementById('theme-espresso').value = data.theme.espresso;
+            document.getElementById('theme-espresso-hex').value = data.theme.espresso;
+          }
+          if (data.theme.gold) {
+            document.getElementById('theme-gold').value = data.theme.gold;
+            document.getElementById('theme-gold-hex').value = data.theme.gold;
+          }
+        }
+
+        // Initialize Sections
+        SECTIONS = data.custom_sections || [];
+        // Support legacy custom_buttons
+        if (data.custom_buttons && data.custom_buttons.length > 0 && SECTIONS.length === 0) {
+          SECTIONS.push({
+            id: 'sec_featured',
+            title: 'FEATURED LINKS',
+            buttons: data.custom_buttons
+          });
+        }
+        renderSections();
+
+        // Footer Custom Buttons
+        FOOTER_BUTTONS = (data.location && data.location.custom_contact_buttons) || [];
+        renderFooterButtons();
+
+        // Primary inputs
         document.getElementById('cfg-website').value = (data.websites && data.websites[0]) ? data.websites[0].url : (data.brand.website_url || 'https://maxdaily.coffee');
-        document.getElementById('cfg-rating').value = data.google_review.rating;
-        document.getElementById('cfg-review-url').value = data.google_review.review_url;
-        document.getElementById('cfg-ig-handle').value = data.social_media[0].handle;
-        document.getElementById('cfg-ig-url').value = data.social_media[0].url;
-        document.getElementById('cfg-tt-handle').value = data.social_media[1].handle;
-        document.getElementById('cfg-tt-url').value = data.social_media[1].url;
-        document.getElementById('cfg-fb-handle').value = data.social_media[2].handle;
-        document.getElementById('cfg-fb-url').value = data.social_media[2].url;
-        document.getElementById('cfg-address').value = data.location.address_line_1 + ', ' + data.location.address_line_2;
-        document.getElementById('cfg-phone').value = data.location.phone;
-        document.getElementById('cfg-whatsapp').value = data.location.whatsapp;
-        document.getElementById('cfg-hours').value = data.location.hours;
-        document.getElementById('cfg-maps').value = data.location.google_maps_url;
+        document.getElementById('cfg-rating').value = data.google_review ? data.google_review.rating : '4.9';
+        document.getElementById('cfg-review-url').value = data.google_review ? data.google_review.review_url : '';
+        
+        if (data.social_media && data.social_media.length >= 3) {
+          document.getElementById('cfg-ig-handle').value = data.social_media[0].handle || '';
+          document.getElementById('cfg-ig-url').value = data.social_media[0].url || '';
+          document.getElementById('cfg-tt-handle').value = data.social_media[1].handle || '';
+          document.getElementById('cfg-tt-url').value = data.social_media[1].url || '';
+          document.getElementById('cfg-fb-handle').value = data.social_media[2].handle || '';
+          document.getElementById('cfg-fb-url').value = data.social_media[2].url || '';
+        }
+
+        if (data.location) {
+          document.getElementById('cfg-address').value = (data.location.address_line_1 || '') + (data.location.address_line_2 ? ', ' + data.location.address_line_2 : '');
+          document.getElementById('cfg-phone').value = data.location.phone || '';
+          document.getElementById('cfg-whatsapp').value = data.location.whatsapp || '';
+          document.getElementById('cfg-hours').value = data.location.hours || '';
+          document.getElementById('cfg-maps').value = data.location.google_maps_url || '';
+        }
       })
       .catch(() => {});
 
-    function renderButtonsList() {
-      const el = document.getElementById('custom-buttons-list');
-      if (!CUSTOM_BUTTONS || CUSTOM_BUTTONS.length === 0) {
-        el.innerHTML = '<div style="font-size:12px;color:var(--warm-beige);opacity:0.6;padding:8px 0;">No custom buttons yet. Use the form below to add one!</div>';
+    function openAddSectionDialog() {
+      const title = prompt('Enter a title for the new section (e.g. SPECIAL OFFERS, OUR PARTNERS):');
+      if (!title || !title.trim()) return;
+      SECTIONS.push({
+        id: 'sec_' + Date.now(),
+        title: title.trim().toUpperCase(),
+        buttons: []
+      });
+      renderSections();
+      syncPreview();
+    }
+
+    function removeSection(secIndex) {
+      if (confirm(`Remove entire section "${SECTIONS[secIndex].title}" and all its buttons?`)) {
+        SECTIONS.splice(secIndex, 1);
+        renderSections();
+        syncPreview();
+      }
+    }
+
+    function editSectionTitle(secIndex) {
+      const current = SECTIONS[secIndex].title;
+      const updated = prompt('Edit section title:', current);
+      if (updated && updated.trim()) {
+        SECTIONS[secIndex].title = updated.trim().toUpperCase();
+        renderSections();
+        syncPreview();
+      }
+    }
+
+    function renderSections() {
+      const container = document.getElementById('sections-container-admin');
+      const selectTarget = document.getElementById('new-btn-target-section');
+
+      if (!SECTIONS || SECTIONS.length === 0) {
+        container.innerHTML = '<div style="font-size:12px;color:var(--warm-beige);opacity:0.6;padding:12px;text-align:center;">No custom sections yet. Click "+ Add New Section" to create one!</div>';
+        selectTarget.innerHTML = '<option value="">(No sections created yet)</option>';
         return;
       }
-      el.innerHTML = CUSTOM_BUTTONS.map((btn, index) => `
-        <div class="button-row-item">
-          <div>
-            <div style="font-size:12px;font-weight:800;color:var(--gold);">${btn.title}</div>
-            <div style="font-size:10.5px;color:var(--warm-beige);opacity:0.75;">${btn.subtitle || ''}</div>
+
+      // Populate dropdown
+      selectTarget.innerHTML = SECTIONS.map((sec, idx) => `
+        <option value="${idx}">${sec.title}</option>
+      `).join('');
+
+      // Render cards
+      container.innerHTML = SECTIONS.map((sec, secIdx) => `
+        <div class="section-card">
+          <div class="section-header-bar">
+            <div>
+              <span style="font-size:12.5px;font-weight:800;color:var(--gold);letter-spacing:0.08em;">${sec.title}</span>
+              <span style="font-size:10px;color:var(--warm-beige);opacity:0.6;margin-left:8px;">(${sec.buttons.length} buttons)</span>
+            </div>
+            <div style="display:flex;gap:6px;">
+              <button class="btn secondary small" onclick="editSectionTitle(${secIdx})">✏️ Rename</button>
+              <button class="btn danger small" onclick="removeSection(${secIdx})">🗑 Remove</button>
+            </div>
           </div>
-          <div style="font-size:11px;color:var(--warm-beige);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
-            ${btn.url}
+
+          <div class="buttons-list">
+            ${sec.buttons.length === 0 ? '<div style="font-size:11px;color:var(--warm-beige);opacity:0.6;padding:6px 0;">No buttons in this section yet. Use the form below to add one.</div>' : ''}
+            ${sec.buttons.map((btn, btnIdx) => `
+              <div class="button-item">
+                <div class="button-icon-badge">✦</div>
+                <div class="button-info">
+                  <div class="button-info-title">${btn.title} ${btn.badge ? `<span style="font-size:9px;padding:2px 6px;border-radius:999px;background:rgba(217,174,123,0.2);color:var(--gold);border:1px solid var(--border-gold);">${btn.badge}</span>` : ''}</div>
+                  <div class="button-info-sub">${btn.subtitle || ''} • <span style="opacity:0.8;">${btn.url}</span></div>
+                </div>
+                <div style="display:flex;gap:6px;">
+                  <button class="btn secondary small" onclick="editButton(${secIdx}, ${btnIdx})">✏️</button>
+                  <button class="btn danger small" onclick="removeButton(${secIdx}, ${btnIdx})">🗑</button>
+                </div>
+              </div>
+            `).join('')}
           </div>
-          <button class="btn danger" style="padding:6px 10px;font-size:10px;" onclick="removeButton(${index})">🗑 Remove</button>
         </div>
       `).join('');
     }
 
-    function addNewButton() {
+    function addNewButtonToSection() {
+      const secIdx = document.getElementById('new-btn-target-section').value;
+      if (secIdx === '' || !SECTIONS[secIdx]) {
+        alert('Please create or select a section first.');
+        return;
+      }
       const title = document.getElementById('new-btn-title').value.trim();
       const sub = document.getElementById('new-btn-sub').value.trim();
       const url = document.getElementById('new-btn-url').value.trim();
+      const icon = document.getElementById('new-btn-icon').value;
+      const badge = document.getElementById('new-btn-badge').value.trim();
+
       if (!title || !url) {
-        alert('Please enter both a Button Title and Link URL.');
+        alert('Please enter both a Button Title and Destination URL.');
         return;
       }
-      CUSTOM_BUTTONS.push({ id: 'btn_' + Date.now(), title: title.toUpperCase(), subtitle: sub, url: url });
+
+      SECTIONS[secIdx].buttons.push({
+        id: 'btn_' + Date.now(),
+        title: title.toUpperCase(),
+        subtitle: sub,
+        url: url,
+        icon: icon,
+        badge: badge
+      });
+
       document.getElementById('new-btn-title').value = '';
       document.getElementById('new-btn-sub').value = '';
       document.getElementById('new-btn-url').value = '';
-      renderButtonsList();
+      document.getElementById('new-btn-badge').value = '';
+
+      renderSections();
       syncPreview();
     }
 
-    function removeButton(index) {
-      CUSTOM_BUTTONS.splice(index, 1);
-      renderButtonsList();
+    function editButton(secIdx, btnIdx) {
+      const btn = SECTIONS[secIdx].buttons[btnIdx];
+      const newTitle = prompt('Edit Button Title:', btn.title);
+      if (newTitle === null) return;
+      const newSub = prompt('Edit Subtitle:', btn.subtitle || '');
+      if (newSub === null) return;
+      const newUrl = prompt('Edit Destination URL:', btn.url);
+      if (!newUrl) return;
+
+      btn.title = newTitle.trim().toUpperCase();
+      btn.subtitle = newSub.trim();
+      btn.url = newUrl.trim();
+
+      renderSections();
+      syncPreview();
+    }
+
+    function removeButton(secIdx, btnIdx) {
+      SECTIONS[secIdx].buttons.splice(btnIdx, 1);
+      renderSections();
+      syncPreview();
+    }
+
+    function renderFooterButtons() {
+      const el = document.getElementById('footer-buttons-list');
+      if (!FOOTER_BUTTONS || FOOTER_BUTTONS.length === 0) {
+        el.innerHTML = '<div style="font-size:11px;color:var(--warm-beige);opacity:0.6;padding:4px 0;">No extra footer contact buttons.</div>';
+        return;
+      }
+      el.innerHTML = FOOTER_BUTTONS.map((btn, idx) => `
+        <div class="button-item" style="margin-bottom:6px;">
+          <div class="button-icon-badge">📞</div>
+          <div class="button-info">
+            <div class="button-info-title">${btn.title}</div>
+            <div class="button-info-sub">${btn.url}</div>
+          </div>
+          <button class="btn danger small" onclick="removeFooterButton(${idx})">🗑</button>
+        </div>
+      `).join('');
+    }
+
+    function addFooterContactButton() {
+      const title = document.getElementById('new-footer-btn-title').value.trim();
+      const url = document.getElementById('new-footer-btn-url').value.trim();
+      if (!title || !url) {
+        alert('Please provide both button title and URL');
+        return;
+      }
+      FOOTER_BUTTONS.push({
+        id: 'foot_btn_' + Date.now(),
+        title: title,
+        url: url
+      });
+      document.getElementById('new-footer-btn-title').value = '';
+      document.getElementById('new-footer-btn-url').value = '';
+      renderFooterButtons();
+      syncPreview();
+    }
+
+    function removeFooterButton(idx) {
+      FOOTER_BUTTONS.splice(idx, 1);
+      renderFooterButtons();
       syncPreview();
     }
 
@@ -557,11 +931,40 @@
         menu_categories: []
       };
 
-      cfg.custom_buttons = CUSTOM_BUTTONS;
+      // Theme
+      cfg.theme = {
+        bg_color: document.getElementById('theme-bg-hex').value.trim(),
+        card_bg: document.getElementById('theme-card-bg-hex').value.trim(),
+        bg_gradient_start: document.getElementById('theme-grad-start-hex').value.trim(),
+        bg_gradient_end: document.getElementById('theme-grad-end-hex').value.trim(),
+        espresso: document.getElementById('theme-espresso-hex').value.trim(),
+        gold: document.getElementById('theme-gold-hex').value.trim(),
+        gold_deep: "#B5854B"
+      };
+
+      // Custom Sections & Buttons
+      cfg.custom_sections = SECTIONS;
+      cfg.custom_buttons = []; // Migrated into custom_sections
+
+      // Primary top website
+      if (!cfg.websites || cfg.websites.length === 0) {
+        cfg.websites = [{ id: "official_website", title: "OFFICIAL WEBSITE", url: "" }];
+      }
       cfg.websites[0].url = document.getElementById('cfg-website').value.trim();
+
+      // Google Review
+      if (!cfg.google_review) cfg.google_review = {};
       cfg.google_review.rating = document.getElementById('cfg-rating').value.trim();
       cfg.google_review.review_url = document.getElementById('cfg-review-url').value.trim();
 
+      // Socials
+      if (!cfg.social_media || cfg.social_media.length < 3) {
+        cfg.social_media = [
+          { id: "instagram", platform: "Instagram", icon: "instagram" },
+          { id: "tiktok", platform: "TikTok", icon: "tiktok" },
+          { id: "facebook", platform: "Facebook", icon: "facebook" }
+        ];
+      }
       cfg.social_media[0].handle = document.getElementById('cfg-ig-handle').value.trim();
       cfg.social_media[0].url = document.getElementById('cfg-ig-url').value.trim();
       cfg.social_media[1].handle = document.getElementById('cfg-tt-handle').value.trim();
@@ -569,6 +972,8 @@
       cfg.social_media[2].handle = document.getElementById('cfg-fb-handle').value.trim();
       cfg.social_media[2].url = document.getElementById('cfg-fb-url').value.trim();
 
+      // Footer Location & Extra Contact Buttons
+      if (!cfg.location) cfg.location = {};
       const addrParts = document.getElementById('cfg-address').value.split(',');
       cfg.location.address_line_1 = addrParts[0]?.trim() || '';
       cfg.location.address_line_2 = addrParts.slice(1).join(',').trim() || '';
@@ -576,6 +981,7 @@
       cfg.location.whatsapp = document.getElementById('cfg-whatsapp').value.trim();
       cfg.location.hours = document.getElementById('cfg-hours').value.trim();
       cfg.location.google_maps_url = document.getElementById('cfg-maps').value.trim();
+      cfg.location.custom_contact_buttons = FOOTER_BUTTONS;
 
       return cfg;
     }
@@ -604,11 +1010,16 @@
       const statusEl = document.getElementById('status-msg');
       if (!token) {
         statusEl.style.display = 'block';
+        statusEl.style.background = 'rgba(239, 68, 68, 0.2)';
+        statusEl.style.color = '#F87171';
         statusEl.textContent = 'Please enter your Owner Access Token (or click Download hub_config.json).';
         return;
       }
       statusEl.style.display = 'block';
-      statusEl.textContent = 'Publishing live to ' + repo + '...';
+      statusEl.style.background = 'rgba(217, 174, 123, 0.2)';
+      statusEl.style.color = 'var(--gold)';
+      statusEl.textContent = 'Connecting to GitHub repository ' + repo + '...';
+
       try {
         const cfg = buildUpdatedConfig();
         const getRes = await fetch(`https://api.github.com/repos/${repo}/contents/hub_config.json`, {
@@ -616,6 +1027,7 @@
         });
         const fileData = getRes.ok ? await getRes.json() : {};
         const contentB64 = btoa(unescape(encodeURIComponent(JSON.stringify(cfg, null, 2))));
+        
         const putRes = await fetch(`https://api.github.com/repos/${repo}/contents/hub_config.json`, {
           method: 'PUT',
           headers: {
@@ -623,17 +1035,25 @@
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            message: 'Update MAX DAILY Hub links via Owner Control Panel',
+            message: 'Update MAX DAILY Hub sections & theme via Owner Control Panel',
             content: contentB64,
             sha: fileData.sha
           })
         });
+
         if (putRes.ok) {
+          statusEl.style.background = 'rgba(16, 185, 129, 0.2)';
+          statusEl.style.color = '#10B981';
           statusEl.textContent = '✓ Successfully published! Your live customer QR hub is updated.';
         } else {
-          statusEl.textContent = 'Error publishing: ' + putRes.statusText;
+          const errData = await putRes.json().catch(() => ({}));
+          statusEl.style.background = 'rgba(239, 68, 68, 0.2)';
+          statusEl.style.color = '#F87171';
+          statusEl.textContent = 'Error publishing: ' + (errData.message || putRes.statusText);
         }
       } catch (e) {
+        statusEl.style.background = 'rgba(239, 68, 68, 0.2)';
+        statusEl.style.color = '#F87171';
         statusEl.textContent = 'Error: ' + e.message;
       }
     }

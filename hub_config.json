@@ -19,10 +19,10 @@
   },
   "location": {
     "branch_name": "MAX DAILY — Flagship Roastery & Bakery",
-    "address_line_1": "Specialty Coffee District",
-    "address_line_2": "Main Boulevard, Cairo, Egypt",
+    "address_line_1": "Specialty Coffee District, Main Boulevard",
+    "address_line_2": "Cairo, Egypt",
     "hours": "Daily: 07:00 AM – 12:00 AM",
-    "phone": "012336665",
+    "phone": "+20 100 000 0000",
     "whatsapp": "https://wa.me/201000000000?text=Hello%20MAX%20DAILY!",
     "google_maps_url": "https://maps.google.com/?q=MAX+DAILY+Specialty+Coffee+and+Bakery",
     "coordinates_label": "30.0444° N, 31.2357° E"
@@ -274,12 +274,31 @@
       ]
     }
   ],
-  "custom_buttons": [
+  "theme": {
+    "bg_color": "#F4E9DC",
+    "bg_gradient_start": "#F7EFE4",
+    "bg_gradient_end": "#F4E9DC",
+    "card_bg": "#FAF4EC",
+    "espresso": "#1A120D",
+    "gold": "#D9AE7B",
+    "gold_deep": "#B5854B"
+  },
+  "custom_buttons": [],
+  "custom_sections": [
     {
-      "id": "btn_1794604788762",
-      "title": "LOYALLTY CARD",
-      "subtitle": "BE ONE OF OUR SPECIALS",
-      "url": "Digital loyalty stamp cards for MAX DAILY specialty coffee & bakery customers, offering visit stamps, rewards, and store updates."
+      "id": "sec_featured",
+      "title": "FEATURED OFFERS & SPECIALS",
+      "buttons": [
+        {
+          "id": "btn_loyalty_1",
+          "title": "LOYALTY CARD",
+          "subtitle": "COLLECT STAMPS & EARN REWARDS",
+          "url": "https://maxdailycafe.github.io/MaxDialyDashboard/",
+          "icon": "award",
+          "badge": "NEW",
+          "visible": true
+        }
+      ]
     }
   ]
 }

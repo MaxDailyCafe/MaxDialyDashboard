@@ -774,66 +774,66 @@
       </div>
     </header>
 
-    <!-- 2. Practical Primary Actions: Website & Digital Menu -->
-    <section class="primary-grid">
-      <a class="primary-card dark-accent tilt-card" id="btn-website" href="https://maxdaily.coffee" target="_blank" rel="noopener" data-cursor="disc" data-disc="VISIT">
-        <div class="tilt-sheen"></div>
-        <div class="primary-card-content">
-          <div class="primary-icon-box">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+    <!-- 2. Dynamic Sections Container (Controlled via Owner Admin) -->
+    <div id="dynamic-sections-container">
+      <!-- 2. Primary Actions: Website & Digital Menu -->
+      <section class="primary-grid" id="primary-grid-wrap">
+        <a class="primary-card dark-accent tilt-card" id="btn-website" href="https://maxdaily.coffee" target="_blank" rel="noopener" data-cursor="disc" data-disc="VISIT">
+          <div class="tilt-sheen"></div>
+          <div class="primary-card-content">
+            <div class="primary-icon-box" id="btn-website-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <div class="primary-card-title" id="btn-website-title">OFFICIAL WEBSITE</div>
+            <div class="primary-card-sub" id="btn-website-sub">Explore Our Story</div>
           </div>
-          <div class="primary-card-title">OFFICIAL WEBSITE</div>
-          <div class="primary-card-sub">Explore Our Story</div>
+        </a>
+
+        <button class="primary-card tilt-card" id="btn-menu-card" onclick="openMenuModal()" data-cursor="disc" data-disc="MENU">
+          <div class="tilt-sheen"></div>
+          <div class="primary-card-content">
+            <div class="primary-icon-box">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
+            </div>
+            <div class="primary-card-title">DIGITAL MENU</div>
+            <div class="primary-card-sub">Coffee &amp; Bakery</div>
+          </div>
+        </button>
+      </section>
+
+      <!-- 3. Google Rating Card -->
+      <a class="google-card tilt-card" id="google-review-card" href="https://search.google.com/local/writereview?placeid=MAX_DAILY_PLACE_ID" target="_blank" rel="noopener" data-cursor="hover">
+        <div class="tilt-sheen"></div>
+        <div class="google-left">
+          <div class="google-badge-box">
+            <div class="google-score" id="google-rating-num">4.9</div>
+            <div class="google-stars">★★★★★</div>
+          </div>
+          <div>
+            <div class="google-title" id="google-cta-title">GOOGLE RATING &amp; REVIEWS</div>
+            <div class="google-sub" id="google-cta-subtitle">Tap to rate your experience on Google</div>
+          </div>
         </div>
+        <div class="google-btn">RATE US ★</div>
       </a>
 
-      <button class="primary-card tilt-card" onclick="openMenuModal()" data-cursor="disc" data-disc="MENU">
-        <div class="tilt-sheen"></div>
-        <div class="primary-card-content">
-          <div class="primary-icon-box">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
-          </div>
-          <div class="primary-card-title">DIGITAL MENU</div>
-          <div class="primary-card-sub">Coffee &amp; Bakery</div>
-        </div>
-      </button>
-    </section>
+      <!-- Custom Sections Added by Owner -->
+      <div id="custom-sections-wrap"></div>
 
-    <!-- 3. Google Rating Card -->
-    <a class="google-card tilt-card" id="google-review-card" href="https://search.google.com/local/writereview?placeid=MAX_DAILY_PLACE_ID" target="_blank" rel="noopener" data-cursor="hover">
-      <div class="tilt-sheen"></div>
-      <div class="google-left">
-        <div class="google-badge-box">
-          <div class="google-score" id="google-rating-num">4.9</div>
-          <div class="google-stars">★★★★★</div>
+      <!-- 4. Social Media (Instagram, TikTok, Facebook) -->
+      <div id="socials-wrap">
+        <div class="section-label">
+          <span id="socials-header-label">FOLLOW MAX DAILY</span>
         </div>
-        <div>
-          <div class="google-title" id="google-cta-title">GOOGLE RATING &amp; REVIEWS</div>
-          <div class="google-sub" id="google-cta-subtitle">Tap to rate your experience on Google</div>
-        </div>
+        <section class="social-list" id="socials-container"></section>
       </div>
-      <div class="google-btn">RATE US ★</div>
-    </a>
-
-    <!-- 3.5 Custom Dynamic Buttons -->
-    <div id="custom-buttons-wrap" style="display:none;margin-bottom:18px;">
-      <div class="section-label">
-        <span id="custom-buttons-label">FEATURED LINKS</span>
-      </div>
-      <div class="social-list" id="custom-buttons-container"></div>
     </div>
-
-    <!-- 4. Social Media (Instagram, TikTok, Facebook) -->
-    <div class="section-label">
-      <span>FOLLOW MAX DAILY</span>
-    </div>
-    <section class="social-list" id="socials-container"></section>
 
     <!-- 5. Contact & Location Listed in the Footer -->
     <footer class="contact-footer tilt-card" id="contact-footer">
       <div class="tilt-sheen"></div>
       <div class="footer-header">CONTACT &amp; LOCATION</div>
-      <div class="contact-list">
+      <div class="contact-list" id="footer-contact-list">
         <a class="contact-item" id="footer-map" href="https://maps.google.com/?q=MAX+DAILY+Specialty+Coffee+and+Bakery" target="_blank" rel="noopener" data-cursor="hover">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           <span id="contact-address">Specialty Coffee District, Main Boulevard, Cairo</span>
@@ -867,6 +867,29 @@
   </div>
 
   <script>
+    // System SVG Icons Dictionary for custom sections and buttons
+    const SYSTEM_ICONS = {
+      globe: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',
+      coffee: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>',
+      whatsapp: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>',
+      phone: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>',
+      map: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>',
+      instagram: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>',
+      tiktok: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>',
+      facebook: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>',
+      award: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>',
+      gift: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>',
+      link: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>',
+      clock: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
+      star: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>'
+    };
+
+    // Pre-declare tilt and physics registry to prevent any Temporal Dead Zone errors
+    let tiltRegistry = [];
+    let mouse = { x: -100, y: -100, isOver: false };
+    let ringPos = { x: -100, y: -100 };
+    let dotPos = { x: -100, y: -100 };
+
     let HUB_DATA = {
       brand: {
         name: "MAX DAILY",
@@ -874,34 +897,34 @@
         slogan: "A DAILY DOSE OF POSITIVITY",
         website_url: "https://maxdaily.coffee"
       },
+      theme: {
+        bg_color: "#F4E9DC",
+        bg_gradient_start: "#F7EFE4",
+        bg_gradient_end: "#F4E9DC",
+        card_bg: "#FAF4EC",
+        espresso: "#1A120D",
+        gold: "#D9AE7B",
+        gold_deep: "#B5854B"
+      },
       google_review: {
         rating: "4.9",
         cta_title: "GOOGLE RATING & REVIEWS",
         cta_subtitle: "Tap to rate your experience on Google",
         review_url: "https://search.google.com/local/writereview?placeid=MAX_DAILY_PLACE_ID"
       },
-      social_media: [
+      websites: [
         {
-          id: "instagram",
-          platform: "Instagram",
-          handle: "@maxdaily.coffee",
-          url: "https://instagram.com/maxdaily.coffee",
-          icon: "instagram"
-        },
-        {
-          id: "tiktok",
-          platform: "TikTok",
-          handle: "@maxdaily.coffee",
-          url: "https://tiktok.com/@maxdaily.coffee",
-          icon: "tiktok"
-        },
-        {
-          id: "facebook",
-          platform: "Facebook",
-          handle: "/maxdaily.coffee",
-          url: "https://facebook.com/maxdaily.coffee",
-          icon: "facebook"
+          id: "official_website",
+          title: "OFFICIAL WEBSITE",
+          subtitle: "Explore our story, specialty beans & locations",
+          url: "https://maxdaily.coffee",
+          icon: "globe"
         }
+      ],
+      social_media: [
+        { id: "instagram", platform: "Instagram", handle: "@maxdaily.coffee", url: "https://instagram.com/maxdaily.coffee", icon: "instagram" },
+        { id: "tiktok", platform: "TikTok", handle: "@maxdaily.coffee", url: "https://tiktok.com/@maxdaily.coffee", icon: "tiktok" },
+        { id: "facebook", platform: "Facebook", handle: "/maxdaily.coffee", url: "https://facebook.com/maxdaily.coffee", icon: "facebook" }
       ],
       location: {
         address_line_1: "Specialty Coffee District, Main Boulevard",
@@ -911,131 +934,229 @@
         whatsapp: "https://wa.me/201000000000?text=Hello%20MAX%20DAILY!",
         google_maps_url: "https://maps.google.com/?q=MAX+DAILY+Specialty+Coffee+and+Bakery"
       },
-      menu_categories: [
+      custom_buttons: [
         {
-          id: "signatures",
-          title: "MAX SIGNATURES",
-          columns: ["HOT", "ICED"],
-          items: [
-            { name: "MAX DAILY SIGNATURE", desc: "Salted caramel, roasted hazelnut & double shot", prices: ["125", "135"] },
-            { name: "PISTACHIO VELVET LATTE", desc: "House pistachio cream & double espresso", prices: ["135", "145"] },
-            { name: "SPANISH LATTE", desc: "Sweetened condensed milk & double espresso", prices: ["115", "125"] },
-            { name: "WHITE MOCHA BREW", desc: "Belgian white chocolate & rich espresso", prices: ["115", "125"] }
-          ]
-        },
-        {
-          id: "espresso_bar",
-          title: "ESPRESSO & MILK",
-          columns: ["HOT", "ICED"],
-          items: [
-            { name: "ESPRESSO / DOPPIO", desc: "Rich signature blend with velvety crema", prices: ["65", "—"] },
-            { name: "AMERICANO", desc: "Double shot espresso over hot water or ice", prices: ["75", "85"] },
-            { name: "FLAT WHITE", desc: "Double ristretto with thin micro-foam", prices: ["95", "—"] },
-            { name: "CAPPUCCINO", desc: "Bold espresso, steamed milk & airy foam", prices: ["95", "105"] },
-            { name: "CAFFE LATTE", desc: "Smooth daily dose with creamy steamed milk", prices: ["95", "105"] }
-          ]
-        },
-        {
-          id: "bakery_sweets",
-          title: "BAKERY & SWEETS",
-          columns: ["PRICE"],
-          items: [
-            { name: "FRENCH BUTTER CROISSANT", desc: "Flaky golden-baked laminated pastry", prices: ["85"] },
-            { name: "PISTACHIO CROISSANT", desc: "Twice-baked with house frangipane cream", prices: ["115"] },
-            { name: "SAN SEBASTIAN CHEESECAKE", desc: "Creamy Basque cheesecake + warm chocolate", prices: ["140"] },
-            { name: "ESPRESSO FUDGE BROWNIE", desc: "Rich dark chocolate chunk with sea salt", prices: ["95"] }
-          ]
+          id: "btn_1794604788762",
+          title: "LOYALTY CARD",
+          subtitle: "BE ONE OF OUR SPECIALS",
+          url: "https://maxdailycafe.github.io/MaxDialyDashboard/"
         }
-      ]
-    };
-
-    const SOCIAL_ICONS = {
-      instagram: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>`,
-      tiktok: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>`,
-      facebook: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>`
+      ],
+      custom_sections: [],
+      menu_categories: []
     };
 
     function renderHub() {
-      document.getElementById('brand-subtitle').textContent = HUB_DATA.brand.subtitle;
-      document.getElementById('brand-slogan').innerHTML = `<span>✦</span> ${HUB_DATA.brand.slogan} <span>✦</span>`;
+      // 1. Dynamic Theme & Background Colors
+      if (HUB_DATA.theme) {
+        const root = document.documentElement;
+        if (HUB_DATA.theme.bg_color) {
+          root.style.setProperty('--cream-bg', HUB_DATA.theme.bg_color);
+        }
+        if (HUB_DATA.theme.card_bg) {
+          root.style.setProperty('--cream-soft', HUB_DATA.theme.card_bg);
+        }
+        if (HUB_DATA.theme.espresso) {
+          root.style.setProperty('--espresso', HUB_DATA.theme.espresso);
+        }
+        if (HUB_DATA.theme.gold) {
+          root.style.setProperty('--gold', HUB_DATA.theme.gold);
+        }
+        if (HUB_DATA.theme.gold_deep) {
+          root.style.setProperty('--gold-deep', HUB_DATA.theme.gold_deep);
+        }
+        if (HUB_DATA.theme.bg_gradient_start && HUB_DATA.theme.bg_gradient_end) {
+          document.body.style.backgroundImage = `radial-gradient(circle at 50% 0%, rgba(217, 174, 123, 0.25) 0%, transparent 55%), linear-gradient(180deg, ${HUB_DATA.theme.bg_gradient_start} 0%, ${HUB_DATA.theme.bg_gradient_end} 100%)`;
+        }
+      }
+
+      // 2. Brand Headers
+      if (HUB_DATA.brand) {
+        document.getElementById('brand-subtitle').textContent = HUB_DATA.brand.subtitle || 'SPECIALTY COFFEE & BAKERY';
+        document.getElementById('brand-slogan').innerHTML = `<span>✦</span> ${HUB_DATA.brand.slogan || 'A DAILY DOSE OF POSITIVITY'} <span>✦</span>`;
+      }
+
+      // 3. Official Website Card
       if (HUB_DATA.websites && HUB_DATA.websites[0]) {
         document.getElementById('btn-website').href = HUB_DATA.websites[0].url;
-      } else if (HUB_DATA.brand.website_url) {
+        if (HUB_DATA.websites[0].title) document.getElementById('btn-website-title').textContent = HUB_DATA.websites[0].title;
+        if (HUB_DATA.websites[0].subtitle) document.getElementById('btn-website-sub').textContent = HUB_DATA.websites[0].subtitle;
+      } else if (HUB_DATA.brand && HUB_DATA.brand.website_url) {
         document.getElementById('btn-website').href = HUB_DATA.brand.website_url;
       }
 
-      document.getElementById('google-rating-num').textContent = HUB_DATA.google_review.rating;
-      document.getElementById('google-review-card').href = HUB_DATA.google_review.review_url;
+      // 4. Google Review Card
+      if (HUB_DATA.google_review) {
+        document.getElementById('google-rating-num').textContent = HUB_DATA.google_review.rating || '4.9';
+        document.getElementById('google-review-card').href = HUB_DATA.google_review.review_url || '#';
+        if (HUB_DATA.google_review.cta_title) document.getElementById('google-cta-title').textContent = HUB_DATA.google_review.cta_title;
+        if (HUB_DATA.google_review.cta_subtitle) document.getElementById('google-cta-subtitle').textContent = HUB_DATA.google_review.cta_subtitle;
+      }
 
-      // Render Custom Dynamic Buttons
-      const customWrap = document.getElementById('custom-buttons-wrap');
-      const customContainer = document.getElementById('custom-buttons-container');
+      // 5. Dynamic Custom Sections & Legacy custom_buttons
+      const customSectionsWrap = document.getElementById('custom-sections-wrap');
+      let sectionsHTML = '';
+
+      // Legacy custom_buttons as a section if present
       if (HUB_DATA.custom_buttons && HUB_DATA.custom_buttons.length > 0) {
-        customWrap.style.display = 'block';
-        customContainer.innerHTML = HUB_DATA.custom_buttons.map((btn, i) => `
-          <a class="social-row tilt-card" href="${btn.url}" target="_blank" rel="noopener" data-cursor="hover" style="border-left: 3.5px solid var(--gold-deep);">
+        sectionsHTML += `
+          <div style="margin-bottom:18px;">
+            <div class="section-label">
+              <span>FEATURED LINKS</span>
+            </div>
+            <div class="social-list">
+              ${HUB_DATA.custom_buttons.map(btn => `
+                <a class="social-row tilt-card" href="${btn.url}" target="_blank" rel="noopener" data-cursor="hover" style="border-left: 3.5px solid var(--gold-deep);">
+                  <div class="tilt-sheen"></div>
+                  <div class="social-left">
+                    <div class="social-icon" style="background:var(--cream-bg);color:var(--espresso);border:1px solid var(--border-gold);">
+                      ${SYSTEM_ICONS[btn.icon] || SYSTEM_ICONS.link}
+                    </div>
+                    <div>
+                      <div class="social-name">${btn.title}</div>
+                      <div class="social-handle">${btn.subtitle || ''}</div>
+                    </div>
+                  </div>
+                  <div class="social-arrow">→</div>
+                </a>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      // Multi-section engine: custom sections added from Admin
+      if (HUB_DATA.custom_sections && HUB_DATA.custom_sections.length > 0) {
+        HUB_DATA.custom_sections.forEach(sec => {
+          if (!sec.buttons || sec.buttons.length === 0) return;
+          sectionsHTML += `
+            <div style="margin-bottom:18px;">
+              <div class="section-label">
+                <span>${sec.title.toUpperCase()}</span>
+              </div>
+              <div class="social-list">
+                ${sec.buttons.filter(b => b.visible !== false).map(b => `
+                  <a class="social-row tilt-card" href="${b.url}" target="_blank" rel="noopener" data-cursor="hover" style="border-left: 3.5px solid var(--gold-deep);">
+                    <div class="tilt-sheen"></div>
+                    <div class="social-left">
+                      <div class="social-icon" style="background:var(--cream-bg);color:var(--espresso);border:1px solid var(--border-gold);">
+                        ${SYSTEM_ICONS[b.icon] || SYSTEM_ICONS.award}
+                      </div>
+                      <div>
+                        <div class="social-name">${b.title}</div>
+                        <div class="social-handle">${b.subtitle || ''}</div>
+                      </div>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:8px;">
+                      ${b.badge ? `<span style="font-size:10px;font-weight:800;padding:3px 8px;border-radius:999px;background:rgba(217,174,123,0.22);color:var(--gold-deep);border:1px solid var(--border-gold);">${b.badge}</span>` : ''}
+                      <div class="social-arrow">→</div>
+                    </div>
+                  </a>
+                `).join('')}
+              </div>
+            </div>
+          `;
+        });
+      }
+      customSectionsWrap.innerHTML = sectionsHTML;
+
+      // 6. Social Media List
+      const socialContainer = document.getElementById('socials-container');
+      if (HUB_DATA.social_media && HUB_DATA.social_media.length > 0) {
+        document.getElementById('socials-wrap').style.display = 'block';
+        socialContainer.innerHTML = HUB_DATA.social_media.map(soc => `
+          <a class="social-row tilt-card" href="${soc.url}" target="_blank" rel="noopener" data-cursor="hover">
             <div class="tilt-sheen"></div>
             <div class="social-left">
-              <div class="social-icon" style="background:var(--cream-bg);color:var(--espresso);border:1px solid var(--border-gold);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-              </div>
+              <div class="social-icon">${SYSTEM_ICONS[soc.icon] || SYSTEM_ICONS.instagram}</div>
               <div>
-                <div class="social-name">${btn.title}</div>
-                <div class="social-handle">${btn.subtitle || btn.url.replace(/^https?:\/\//, '')}</div>
+                <div class="social-name">${soc.platform}</div>
+                <div class="social-handle">${soc.handle}</div>
               </div>
             </div>
             <div class="social-arrow">→</div>
           </a>
         `).join('');
       } else {
-        customWrap.style.display = 'none';
+        document.getElementById('socials-wrap').style.display = 'none';
       }
 
-      const socialContainer = document.getElementById('socials-container');
-      socialContainer.innerHTML = HUB_DATA.social_media.map(soc => `
-        <a class="social-row tilt-card" href="${soc.url}" target="_blank" rel="noopener" data-cursor="hover">
-          <div class="tilt-sheen"></div>
-          <div class="social-left">
-            <div class="social-icon">${SOCIAL_ICONS[soc.icon] || SOCIAL_ICONS.instagram}</div>
-            <div>
-              <div class="social-name">${soc.platform}</div>
-              <div class="social-handle">${soc.handle}</div>
+      // 7. Footer Contact & Location Buttons (Controlled Dynamically)
+      const footerList = document.getElementById('footer-contact-list');
+      if (footerList && HUB_DATA.location) {
+        let footerItemsHTML = '';
+        if (HUB_DATA.location.google_maps_url) {
+          footerItemsHTML += `
+            <a class="contact-item" id="footer-map" href="${HUB_DATA.location.google_maps_url}" target="_blank" rel="noopener" data-cursor="hover">
+              ${SYSTEM_ICONS.map}
+              <span id="contact-address">${HUB_DATA.location.address_line_1 || ''}${HUB_DATA.location.address_line_2 ? ', ' + HUB_DATA.location.address_line_2 : ''}</span>
+            </a>
+          `;
+        }
+        if (HUB_DATA.location.phone) {
+          footerItemsHTML += `
+            <a class="contact-item" id="footer-phone" href="tel:${HUB_DATA.location.phone.replace(/\s+/g, '')}" data-cursor="hover">
+              ${SYSTEM_ICONS.phone}
+              <span id="contact-phone">${HUB_DATA.location.phone}</span>
+            </a>
+          `;
+        }
+        if (HUB_DATA.location.whatsapp) {
+          footerItemsHTML += `
+            <a class="contact-item" id="footer-whatsapp" href="${HUB_DATA.location.whatsapp}" target="_blank" rel="noopener" data-cursor="hover">
+              ${SYSTEM_ICONS.whatsapp}
+              <span>WhatsApp Direct Order &amp; Support</span>
+            </a>
+          `;
+        }
+        if (HUB_DATA.location.hours) {
+          footerItemsHTML += `
+            <div class="contact-item">
+              ${SYSTEM_ICONS.clock}
+              <span id="contact-hours">${HUB_DATA.location.hours}</span>
             </div>
-          </div>
-          <div class="social-arrow">→</div>
-        </a>
-      `).join('');
-
-      document.getElementById('contact-address').textContent = `${HUB_DATA.location.address_line_1}, ${HUB_DATA.location.address_line_2}`;
-      document.getElementById('contact-phone').textContent = HUB_DATA.location.phone;
-      document.getElementById('contact-hours').textContent = HUB_DATA.location.hours;
-      document.getElementById('footer-map').href = HUB_DATA.location.google_maps_url;
-      document.getElementById('footer-phone').href = `tel:${HUB_DATA.location.phone.replace(/\s+/g, '')}`;
-      if (HUB_DATA.location.whatsapp) {
-        document.getElementById('footer-whatsapp').href = HUB_DATA.location.whatsapp;
+          `;
+        }
+        // Custom footer contact buttons added by owner
+        if (HUB_DATA.location.custom_contact_buttons && HUB_DATA.location.custom_contact_buttons.length > 0) {
+          HUB_DATA.location.custom_contact_buttons.forEach(btn => {
+            footerItemsHTML += `
+              <a class="contact-item" href="${btn.url}" target="_blank" rel="noopener" data-cursor="hover">
+                ${SYSTEM_ICONS[btn.icon] || SYSTEM_ICONS.link}
+                <span>${btn.title} ${btn.subtitle ? '— ' + btn.subtitle : ''}</span>
+              </a>
+            `;
+          });
+        }
+        footerList.innerHTML = footerItemsHTML;
       }
 
-      const menuContent = document.getElementById('menu-modal-content');
-      menuContent.innerHTML = HUB_DATA.menu_categories.map(cat => `
-        <div class="menu-cat-block">
-          <div class="menu-cat-header">
-            <span class="menu-cat-name">${cat.title}</span>
-            <div class="menu-cols-labels">${cat.columns.map(c => `<span>${c}</span>`).join('')}</div>
-          </div>
-          ${cat.items.map(item => `
-            <div class="menu-item-row">
-              <div>
-                <div class="menu-item-name">${item.name}</div>
-                <div class="menu-item-desc">${item.desc}</div>
+      // 8. Digital Menu Modal Content
+      if (HUB_DATA.menu_categories && HUB_DATA.menu_categories.length > 0) {
+        const menuContent = document.getElementById('menu-modal-content');
+        menuContent.innerHTML = HUB_DATA.menu_categories.map(cat => `
+          <div class="menu-cat-block">
+            <div class="menu-cat-header">
+              <span class="menu-cat-name">${cat.title}</span>
+              <div class="menu-cols-labels">${cat.columns.map(c => `<span>${c}</span>`).join('')}</div>
+            </div>
+            ${cat.items.map(item => `
+              <div class="menu-item-row">
+                <div>
+                  <div class="menu-item-name">${item.name}</div>
+                  <div class="menu-item-desc">${item.desc}</div>
+                </div>
+                <div class="menu-item-prices">${item.prices.map(p => `<span>${p}</span>`).join('')}</div>
               </div>
-              <div class="menu-item-prices">${item.prices.map(p => `<span>${p}</span>`).join('')}</div>
-            </div>
-          `).join('')}
-        </div>
-      `).join('');
+            `).join('')}
+          </div>
+        `).join('');
+      }
 
       // Refresh 3D tilt bindings for newly injected DOM
-      init3DTilt();
+      if (typeof init3DTilt === 'function') {
+        init3DTilt();
+      }
     }
 
     function openMenuModal() {
@@ -1046,6 +1167,7 @@
       document.getElementById('menu-modal').classList.remove('open');
     }
 
+    // Initial Render
     renderHub();
 
     // Trigger masked entrance reveals
@@ -1053,6 +1175,7 @@
       document.body.classList.add('page-loaded');
     });
 
+    // Auto-fetch latest config from server with cache-busting
     if (window.location.protocol.startsWith('http')) {
       fetch('./hub_config.json?t=' + Date.now())
         .then(r => r.ok ? r.json() : null)
@@ -1071,11 +1194,6 @@
     const cursorRing = document.getElementById('cursor-ring');
     const cursorDot = document.getElementById('cursor-dot');
     const cursorDiscLabel = document.getElementById('cursor-disc-label');
-
-    let mouse = { x: -100, y: -100, isOver: false };
-    let ringPos = { x: -100, y: -100 };
-    let dotPos = { x: -100, y: -100 };
-    let tiltRegistry = [];
 
     window.addEventListener('mousemove', (e) => {
       mouse.x = e.clientX;
